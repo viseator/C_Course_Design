@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/CTaskProject.dir/linkedlist.c.o  -o CTaskProject 
