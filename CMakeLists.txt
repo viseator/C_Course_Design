@@ -10,7 +10,7 @@ set(SOURCE_FILES
         linkedlist.h
 #        main.c
 #        main.h
-        )
+        utils.c utils.h)
 
 
 add_executable(CTaskProject ${SOURCE_FILES})

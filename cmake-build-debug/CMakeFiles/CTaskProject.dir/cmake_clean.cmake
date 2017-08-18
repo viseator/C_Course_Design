@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/CTaskProject.dir/data.c.o"
   "CMakeFiles/CTaskProject.dir/linkedlist.c.o"
+  "CMakeFiles/CTaskProject.dir/utils.c.o"
   "CTaskProject.pdb"
   "CTaskProject"
 )

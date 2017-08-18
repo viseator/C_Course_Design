@@ -94,6 +94,12 @@
 		<Unit filename="/home/viseator/study/CTaskProject/linkedlist.h">
 			<Option target="CTaskProject"/>
 		</Unit>
+		<Unit filename="/home/viseator/study/CTaskProject/utils.c">
+			<Option target="CTaskProject"/>
+		</Unit>
+		<Unit filename="/home/viseator/study/CTaskProject/utils.h">
+			<Option target="CTaskProject"/>
+		</Unit>
 		<Unit filename="/home/viseator/study/CTaskProject/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

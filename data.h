@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #include "linkedlist.h"
 #include <string.h>
+#include <ctype.h>
+#include "utils.h"
 #define NAME_SIZE 22
 
 typedef struct student {
@@ -14,6 +16,7 @@ typedef struct student {
     char birth[9];
     char phone[12];
     float score;
+    int age;
     bool grad;
     char where[NAME_SIZE];
 } Student;
@@ -33,7 +36,7 @@ typedef struct class {
 
 typedef struct grade {
     char id[5];
-    char time[7];
+    char time[9];
     int num;
     int gra_num;
     char coun_name[NAME_SIZE];

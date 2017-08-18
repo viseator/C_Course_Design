@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/home/viseator/study/CTaskProject/data.c" "/home/viseator/study/CTaskProject/cmake-build-debug/CMakeFiles/CTaskProject.dir/data.c.o"
   "/home/viseator/study/CTaskProject/linkedlist.c" "/home/viseator/study/CTaskProject/cmake-build-debug/CMakeFiles/CTaskProject.dir/linkedlist.c.o"
+  "/home/viseator/study/CTaskProject/utils.c" "/home/viseator/study/CTaskProject/cmake-build-debug/CMakeFiles/CTaskProject.dir/utils.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

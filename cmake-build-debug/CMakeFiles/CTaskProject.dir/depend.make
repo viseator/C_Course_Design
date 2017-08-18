@@ -4,7 +4,11 @@
 CMakeFiles/CTaskProject.dir/data.c.o: ../data.c
 CMakeFiles/CTaskProject.dir/data.c.o: ../data.h
 CMakeFiles/CTaskProject.dir/data.c.o: ../linkedlist.h
+CMakeFiles/CTaskProject.dir/data.c.o: ../utils.h
 
 CMakeFiles/CTaskProject.dir/linkedlist.c.o: ../linkedlist.c
 CMakeFiles/CTaskProject.dir/linkedlist.c.o: ../linkedlist.h
+
+CMakeFiles/CTaskProject.dir/utils.c.o: ../utils.c
+CMakeFiles/CTaskProject.dir/utils.c.o: ../utils.h
 

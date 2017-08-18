@@ -17,6 +17,10 @@ linkedlist.h
 /home/viseator/study/CTaskProject/linkedlist.h
 string.h
 -
+ctype.h
+-
+utils.h
+/home/viseator/study/CTaskProject/utils.h
 
 /home/viseator/study/CTaskProject/linkedlist.c
 linkedlist.h
@@ -26,5 +30,15 @@ linkedlist.h
 stdlib.h
 -
 stdio.h
+-
+
+/home/viseator/study/CTaskProject/utils.c
+utils.h
+/home/viseator/study/CTaskProject/utils.h
+
+/home/viseator/study/CTaskProject/utils.h
+stdbool.h
+-
+string.h
 -
 
