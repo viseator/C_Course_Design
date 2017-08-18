@@ -18,7 +18,18 @@ typedef struct list {
     int length;
 } List;
 
-List* init_list(size_t data_size);
+List *init_list(size_t data_size);
 
-void add(List* list, void* data);
+void add(List *list, void *data);
+
+void insert(List *list, Node *node, void *data);
+
+void *getData(List *list, unsigned position);
+
+Node *getNode(List *list, unsigned position);
+
+void removeNode(List *list, Node *node);
+
+Node *getFirst(List *list);
+
 #endif

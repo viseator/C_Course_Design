@@ -20,12 +20,19 @@ void add(List *list, void *data) {
     ++list->length;
 }
 
-void *get(List *list, unsigned position) {
+void insert(List *list, Node *node, void *data) {
+    Node *new_node = (Node *) malloc(NODE_SIZE);
+    new_node->data = data;
+    new_node->next = node->next;
+    node->next = new_node;
+    ++list->length;
+}
+
+void *getData(List *list, unsigned position) {
     if (position >= list->length) {
         return NULL;
     }
-    Node *head = list->head;
-    head = head->next;
+    Node *head = list->head->next;
     if (position == 0) {
         return head->data;
     }
@@ -35,13 +42,47 @@ void *get(List *list, unsigned position) {
     return head->data;
 }
 
+Node *getNode(List *list, unsigned position) {
+    if (position >= list->length) {
+        return NULL;
+    }
+    Node *head = list->head;
+    head = head->next;
+    if (position == 0) {
+        return head;
+    }
+    while (position--) {
+        head = head->next;
+    }
+    return head;
+}
+
+void removeNode(List *list, Node *node) {
+    Node *head = list->head;
+    while (head->next != node) {
+        head = head->next;
+    }
+    head->next = node->next;
+    free(node->data);
+    free(node);
+    --list->length;
+}
+
+Node *getFirst(List *list) {
+    return list->head->next;
+}
+
 int main(void) {
     List *l = init_list(sizeof(int));
-    int a[10] = {1,2,3,4,5,6,7,8,9,10};
+    int *a[10];
     for (int i = 0; i < 10; i++) {
-        add(l, a + i);
+        a[i] = (int *) malloc(sizeof(int));
+        *a[i] = i;
+        add(l, *(a + i));
     }
-    for (int i = 0; i < 10; i++) {
+    Node *head = l->head;
+    removeNode(l, head->next->next);
+    for (int i = 0; i < 9; i++) {
         printf("%d ", *(int *) get(l, (unsigned int) i));
     }
     return 0;
