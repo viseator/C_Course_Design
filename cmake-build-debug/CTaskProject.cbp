@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/viseator/study/CTaskProject/data.c">
+			<Option target="CTaskProject"/>
+		</Unit>
+		<Unit filename="/home/viseator/study/CTaskProject/data.h">
+			<Option target="CTaskProject"/>
+		</Unit>
 		<Unit filename="/home/viseator/study/CTaskProject/linkedlist.c">
 			<Option target="CTaskProject"/>
 		</Unit>

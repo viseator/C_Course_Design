@@ -1,4 +1,10 @@
-#include "datastruct.h"
+#ifndef DATASTRUCT_H
+#define DATASTRUCT_H
+
+#include <stdbool.h>
+#include "linkedlist.h"
+#include <string.h>
+#define NAME_SIZE 22
 
 typedef struct student {
     char id[12];
@@ -10,7 +16,6 @@ typedef struct student {
     float score;
     bool grad;
     char where[NAME_SIZE];
-    void *next;
 } Student;
 
 typedef struct class {
@@ -23,7 +28,7 @@ typedef struct class {
     char phone[12];
     char tea_name[NAME_SIZE];
     char tea_phone[12];
-    void *students;
+    List *students;
 } Class;
 
 typedef struct grade {
@@ -34,9 +39,6 @@ typedef struct grade {
     char coun_name[NAME_SIZE];
     char coun_phone[12];
     char chairman[NAME_SIZE];
-    void *classes;
+    List *classes;
 } Grade;
-
-int main(void) {
-    return 0;
-}
+#endif

@@ -72,18 +72,18 @@ Node *getFirst(List *list) {
     return list->head->next;
 }
 
-int main(void) {
-    List *l = init_list(sizeof(int));
-    int *a[10];
-    for (int i = 0; i < 10; i++) {
-        a[i] = (int *) malloc(sizeof(int));
-        *a[i] = i;
-        add(l, *(a + i));
-    }
-    Node *head = l->head;
-    removeNode(l, head->next->next);
-    for (int i = 0; i < 9; i++) {
-        printf("%d ", *(int *) get(l, (unsigned int) i));
-    }
-    return 0;
-}
+//int main(void) {
+//    List *l = init_list(sizeof(int));
+//    int *a[10];
+//    for (int i = 0; i < 10; i++) {
+//        a[i] = (int *) malloc(sizeof(int));
+//        *a[i] = i;
+//        add(l, *(a + i));
+//    }
+//    Node *head = l->head;
+//    removeNode(l, head->next->next);
+//    for (int i = 0; i < 9; i++) {
+//        printf("%d ", *(int *) get(l, (unsigned int) i));
+//    }
+//    return 0;
+//}

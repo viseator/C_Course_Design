@@ -4,8 +4,8 @@ project(CTaskProject)
 set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES
-#        datastruct.c
-#        datastruct.h
+        data.c
+        data.h
         linkedlist.c
         linkedlist.h
 #        main.c

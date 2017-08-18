@@ -6,6 +6,18 @@
 
 #IncludeRegexTransform: 
 
+/home/viseator/study/CTaskProject/data.c
+data.h
+/home/viseator/study/CTaskProject/data.h
+
+/home/viseator/study/CTaskProject/data.h
+stdbool.h
+-
+linkedlist.h
+/home/viseator/study/CTaskProject/linkedlist.h
+string.h
+-
+
 /home/viseator/study/CTaskProject/linkedlist.c
 linkedlist.h
 /home/viseator/study/CTaskProject/linkedlist.h
