@@ -1,5 +1,6 @@
 #include "data.h"
 
+
 void addGrade(List *list, char *id, char *time, int num, int gra_num, char *coun_name, char *coun_phone,
               char *chairman) {
     Grade *grade = (Grade *) malloc(sizeof(Grade));
@@ -47,7 +48,7 @@ void addStudent(Class *class, char *id, char *name, char *gender, char *hometown
 }
 
 Grade *getGrade(List *grade_list, int position) {
-    return (Grade *) getData(grade_list, 2);
+    return (Grade *) getData(grade_list, position);
 }
 
 Class *getClass(List *grade, int position) {
@@ -191,6 +192,112 @@ List *getStudentByAge(List *student_list, int min, int max) {
     return result;
 }
 
+void openFileForWrite() {
+    student_file = fopen("student.dat", "wb");
+    class_file = fopen("class.dat", "wb");
+    grade_file = fopen("grade.dat", "wb");
+    info_file = fopen("info.dat", "w");
+}
+
+void closeFile() {
+    fclose(student_file);
+    fclose(class_file);
+    fclose(grade_file);
+    fclose(info_file);
+}
+
+void writeListToFile(List *list, FILE *file) {
+    Node *head = list->head->next;
+    while (NULL != head) {
+        fwrite(head->data, list->size, 1, file);
+        head = head->next;
+    }
+}
+
+void saveStudentToFile(List *student_list) {
+    fprintf(info_file, "%d\n", student_list->length);
+    writeListToFile(student_list, student_file);
+}
+
+void saveClassToFile(List *class_list) {
+    fprintf(info_file, "%d\n", class_list->length);
+    writeListToFile(class_list, class_file);
+    Node *head = class_list->head->next;
+    while (NULL != head) {
+        Class *class = (Class *) head->data;
+        saveStudentToFile(class->students);
+        head = head->next;
+    }
+}
+
+void saveGradeToFile(List *grade_list) {
+    openFileForWrite();
+    fprintf(info_file, "%d\n", grade_list->length);
+    writeListToFile(grade_list, grade_file);
+    Node *head = grade_list->head->next;
+    while (NULL != head) {
+        Grade *grade = (Grade *) head->data;
+        saveClassToFile(grade->classes);
+        head = head->next;
+    }
+    closeFile();
+}
+
+void openFileForRead() {
+    student_file = fopen("student.dat", "rb");
+    class_file = fopen("class.dat", "rb");
+    grade_file = fopen("grade.dat", "rb");
+    info_file = fopen("info.dat", "r");
+}
+
+List *readStudentFromFile(int num) {
+    List *result = init_list(sizeof(Student));
+    while (num--) {
+        Student *data = (Student *) malloc(sizeof(Student));
+        fread(data, sizeof(Student), 1, student_file);
+        add(result, data);
+    }
+    return result;
+}
+
+List *readClassFromFile(int num) {
+    List *result = init_list(sizeof(Class));
+    while (num--) {
+        Class *data = (Class *) malloc(sizeof(Class));
+        fread(data, sizeof(Class), 1, class_file);
+        int n;
+        fscanf(info_file, "%d", &n);
+        if (n == 0) {
+            data->students = NULL;
+        } else {
+            data->students = readStudentFromFile(n);
+        }
+        add(result, data);
+    }
+    return result;
+}
+
+List *readGradeFromFile() {
+    openFileForRead();
+    int num;
+    fscanf(info_file, "%d", &num);
+    List *result = init_list(sizeof(Grade));
+    while (num--) {
+        Grade *data = (Grade *) malloc(sizeof(Grade));
+        fread(data, sizeof(Grade), 1, grade_file);
+        int n;
+        fscanf(info_file, "%d", &n);
+        if (n == 0) {
+            data->classes = NULL;
+        } else {
+            data->classes = readClassFromFile(n);
+        }
+        add(result, data);
+    }
+    closeFile();
+    return result;
+}
+
 int main(void) {
     List *grade_list = init_list(sizeof(Grade));
     addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
@@ -199,8 +306,22 @@ int main(void) {
     addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
     addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
     addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-    addClass(((Grade *) getData(grade_list, 2)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234", "Yuan",
+    addClass((getGrade(grade_list, 2)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234", "Yuan",
              "12312341234");
-    List *list = getGradeByTime(grade_list, 20170101, 20180101);
+    addClass((getGrade(grade_list, 2)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234", "Yuan",
+             "12312341234");
+    addClass((getGrade(grade_list, 3)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234", "Yuan",
+             "12312341234");
+    addStudent(getClass(getGrade(grade_list, 2)->classes, 1), "U201614753", "吴迪111", "1", "YUSHAN", "19971024",
+               "13479343728", 666, 18, false, "Ali");
+    addStudent(getClass(getGrade(grade_list, 2)->classes, 0), "U201614753", "吴迪222", "1", "YUSHAN", "19971024",
+               "13479343728", 666, 18, false, "Ali");
+    addStudent(getClass(getGrade(grade_list, 3)->classes, 0), "U201614753", "吴迪333", "1", "YUSHAN", "19971024",
+               "13479343728", 666, 18, false, "Ali");
+    saveGradeToFile(grade_list);
+
+    printf("%s", getStudent(getClass(getGrade(grade_list, 2)->classes, 1)->students, 0)->name);
+    List *new_list = readGradeFromFile();
+    printf("%s", getStudent(getClass(getGrade(new_list, 2)->classes, 1)->students, 0)->name);
     return 0;
 }

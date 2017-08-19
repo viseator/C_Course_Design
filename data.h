@@ -8,6 +8,11 @@
 #include "utils.h"
 #define NAME_SIZE 22
 
+FILE* student_file;
+FILE* class_file;
+FILE* grade_file;
+FILE* info_file;
+
 typedef struct student {
     char id[12];
     char name[NAME_SIZE];
