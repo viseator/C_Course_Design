@@ -8,8 +8,6 @@ set(SOURCE_FILES
         data.h
         linkedlist.c
         linkedlist.h
-#        main.c
-#        main.h
         utils.c utils.h)
 
 
