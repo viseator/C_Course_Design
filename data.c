@@ -298,30 +298,60 @@ List *readGradeFromFile() {
     return result;
 }
 
-int main(void) {
-    List *grade_list = init_list(sizeof(Grade));
-    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-    addClass((getGrade(grade_list, 2)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234", "Yuan",
-             "12312341234");
-    addClass((getGrade(grade_list, 2)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234", "Yuan",
-             "12312341234");
-    addClass((getGrade(grade_list, 3)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234", "Yuan",
-             "12312341234");
-    addStudent(getClass(getGrade(grade_list, 2)->classes, 1), "U201614753", "吴迪111", "1", "YUSHAN", "19971024",
-               "13479343728", 666, 18, false, "Ali");
-    addStudent(getClass(getGrade(grade_list, 2)->classes, 0), "U201614753", "吴迪222", "1", "YUSHAN", "19971024",
-               "13479343728", 666, 18, false, "Ali");
-    addStudent(getClass(getGrade(grade_list, 3)->classes, 0), "U201614753", "吴迪333", "1", "YUSHAN", "19971024",
-               "13479343728", 666, 18, false, "Ali");
-    saveGradeToFile(grade_list);
-
-    printf("%s", getStudent(getClass(getGrade(grade_list, 2)->classes, 1)->students, 0)->name);
-    List *new_list = readGradeFromFile();
-    printf("%s", getStudent(getClass(getGrade(new_list, 2)->classes, 1)->students, 0)->name);
-    return 0;
+void removeStudent(List* student_list){
+    Node* head = student_list->head;
+    while(NULL != head->next){
+        removeNode(student_list, head->next);
+    }
 }
+
+void removeClass(List* class_list){
+    Node* head = class_list->head;
+    while(NULL != head->next){
+        List* student = ((Class*)head->next->data)->students;
+        if(NULL != student){
+            removeStudent(student);
+        }
+        removeNode(class_list,head->next);
+    }
+}
+
+void removeGrade(List* grade_list){
+    Node* head = grade_list->head;
+    while(NULL != head->next){
+        List* class = ((Grade*)head->next->data)->classes;
+        if(NULL != class){
+            removeClass(class);
+        }
+        removeNode(grade_list,head->next);
+    }
+}
+
+//int main(void) {
+//    List *grade_list = init_list(sizeof(Grade));
+//    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
+//    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
+//    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
+//    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
+//    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
+//    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
+//    addClass((getGrade(grade_list, 2)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234", "Yuan",
+//             "12312341234");
+//    addClass((getGrade(grade_list, 2)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234", "Yuan",
+//             "12312341234");
+//    addClass((getGrade(grade_list, 3)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234", "Yuan",
+//             "12312341234");
+//    addStudent(getClass(getGrade(grade_list, 2)->classes, 1), "U201614753", "吴迪111", "1", "YUSHAN", "19971024",
+//               "13479343728", 666, 18, false, "Ali");
+//    addStudent(getClass(getGrade(grade_list, 2)->classes, 0), "U201614753", "吴迪222", "1", "YUSHAN", "19971024",
+//               "13479343728", 666, 18, false, "Ali");
+//    addStudent(getClass(getGrade(grade_list, 3)->classes, 0), "U201614753", "吴迪333", "1", "YUSHAN", "19971024",
+//               "13479343728", 666, 18, false, "Ali");
+//    removeGrade(grade_list);
+//    saveGradeToFile(grade_list);
+//
+//    printf("%s", getStudent(getClass(getGrade(grade_list, 2)->classes, 1)->students, 0)->name);
+//    List *new_list = readGradeFromFile();
+//    printf("%s", getStudent(getClass(getGrade(new_list, 2)->classes, 1)->students, 0)->name);
+//    return 0;
+//}
