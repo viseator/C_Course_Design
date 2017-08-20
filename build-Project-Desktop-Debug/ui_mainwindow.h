@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -28,6 +29,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
+    QGridLayout *gridLayout;
     QTableView *tableView;
     QMenuBar *menuBar;
     QMenu *fileMenu;
@@ -41,17 +43,22 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1018, 656);
+        MainWindow->resize(1047, 598);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        gridLayout = new QGridLayout(centralWidget);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
         tableView = new QTableView(centralWidget);
         tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(-10, 0, 1031, 621));
-        tableView->setMaximumSize(QSize(1031, 621));
+
+        gridLayout->addWidget(tableView, 0, 0, 1, 1);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1018, 24));
+        menuBar->setGeometry(QRect(0, 0, 1047, 24));
         fileMenu = new QMenu(menuBar);
         fileMenu->setObjectName(QStringLiteral("fileMenu"));
         inputMenu = new QMenu(menuBar);
@@ -82,7 +89,7 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "\345\255\246\347\224\237\344\277\241\346\201\257\347\256\241\347\220\206\347\263\273\347\273\237", Q_NULLPTR));
         fileMenu->setTitle(QApplication::translate("MainWindow", "\346\226\207\344\273\266", Q_NULLPTR));
-        inputMenu->setTitle(QApplication::translate("MainWindow", "\345\275\225\345\205\245", Q_NULLPTR));
+        inputMenu->setTitle(QApplication::translate("MainWindow", "\346\267\273\345\212\240", Q_NULLPTR));
         searchMenu->setTitle(QApplication::translate("MainWindow", "\346\237\245\350\257\242", Q_NULLPTR));
         statisticMenu->setTitle(QApplication::translate("MainWindow", "\347\273\237\350\256\241", Q_NULLPTR));
     } // retranslateUi
