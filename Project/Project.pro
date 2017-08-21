@@ -28,13 +28,15 @@ SOURCES += \
         mainwindow.cpp \
     ../data.c \
     ../linkedlist.c \
-    ../utils.c
+    ../utils.c \
+    qvpushbutton.cpp
 
 HEADERS += \
         mainwindow.h \
     ../data.h \
     ../linkedlist.h \
-    ../utils.h
+    ../utils.h \
+    qvpushbutton.h
 
 FORMS += \
         mainwindow.ui

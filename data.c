@@ -1,5 +1,9 @@
 #include "data.h"
 
+FILE *student_file;
+FILE *class_file;
+FILE *grade_file;
+FILE *info_file;
 
 void addGrade(List *list, char *id, char *time, int num, int gra_num, char *coun_name, char *coun_phone,
               char *chairman) {
@@ -347,11 +351,7 @@ void removeGrade(List* grade_list){
 //               "13479343728", 666, 18, false, "Ali");
 //    addStudent(getClass(getGrade(grade_list, 3)->classes, 0), "U201614753", "吴迪333", "1", "YUSHAN", "19971024",
 //               "13479343728", 666, 18, false, "Ali");
-//    removeGrade(grade_list);
 //    saveGradeToFile(grade_list);
-//
-//    printf("%s", getStudent(getClass(getGrade(grade_list, 2)->classes, 1)->students, 0)->name);
-//    List *new_list = readGradeFromFile();
-//    printf("%s", getStudent(getClass(getGrade(new_list, 2)->classes, 1)->students, 0)->name);
+
 //    return 0;
 //}

@@ -54,13 +54,17 @@ SOURCES       = ../Project/main.cpp \
 		../Project/mainwindow.cpp \
 		../data.c \
 		../linkedlist.c \
-		../utils.c moc_mainwindow.cpp
+		../utils.c \
+		../Project/qvpushbutton.cpp moc_mainwindow.cpp \
+		moc_qvpushbutton.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		data.o \
 		linkedlist.o \
 		utils.o \
-		moc_mainwindow.o
+		qvpushbutton.o \
+		moc_mainwindow.o \
+		moc_qvpushbutton.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
@@ -336,11 +340,13 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		../Project/Project.pro ../Project/mainwindow.h \
 		../data.h \
 		../linkedlist.h \
-		../utils.h ../Project/main.cpp \
+		../utils.h \
+		../Project/qvpushbutton.h ../Project/main.cpp \
 		../Project/mainwindow.cpp \
 		../data.c \
 		../linkedlist.c \
-		../utils.c
+		../utils.c \
+		../Project/qvpushbutton.cpp
 QMAKE_TARGET  = Project
 DESTDIR       = 
 TARGET        = Project
@@ -920,8 +926,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Project/mainwindow.h ../data.h ../linkedlist.h ../utils.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Project/main.cpp ../Project/mainwindow.cpp ../data.c ../linkedlist.c ../utils.c $(DISTDIR)/
+	$(COPY_FILE) --parents ../Project/mainwindow.h ../data.h ../linkedlist.h ../utils.h ../Project/qvpushbutton.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Project/main.cpp ../Project/mainwindow.cpp ../data.c ../linkedlist.c ../utils.c ../Project/qvpushbutton.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Project/mainwindow.ui $(DISTDIR)/
 
 
@@ -954,13 +960,22 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/qt/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -Wall -W -dM -E -o moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_qvpushbutton.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
-moc_mainwindow.cpp: ../Project/mainwindow.h \
+	-$(DEL_FILE) moc_mainwindow.cpp moc_qvpushbutton.cpp
+moc_mainwindow.cpp: ../Project/qvpushbutton.h \
+		../data.h \
+		../linkedlist.h \
+		../utils.h \
+		../Project/mainwindow.h \
 		moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/viseator/study/CTaskProject/Project -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.1.1 -I/usr/include/c++/7.1.1/x86_64-pc-linux-gnu -I/usr/include/c++/7.1.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/include-fixed -I/usr/include ../Project/mainwindow.h -o moc_mainwindow.cpp
+
+moc_qvpushbutton.cpp: ../Project/qvpushbutton.h \
+		moc_predefs.h \
+		/usr/bin/moc
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/viseator/study/CTaskProject/Project -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.1.1 -I/usr/include/c++/7.1.1/x86_64-pc-linux-gnu -I/usr/include/c++/7.1.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/include-fixed -I/usr/include ../Project/qvpushbutton.h -o moc_qvpushbutton.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -981,10 +996,18 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-main.o: ../Project/main.cpp ../Project/mainwindow.h
+main.o: ../Project/main.cpp ../Project/mainwindow.h \
+		../Project/qvpushbutton.h \
+		../data.h \
+		../linkedlist.h \
+		../utils.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Project/main.cpp
 
 mainwindow.o: ../Project/mainwindow.cpp ../Project/mainwindow.h \
+		../Project/qvpushbutton.h \
+		../data.h \
+		../linkedlist.h \
+		../utils.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Project/mainwindow.cpp
 
@@ -999,8 +1022,14 @@ linkedlist.o: ../linkedlist.c ../linkedlist.h
 utils.o: ../utils.c ../utils.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o utils.o ../utils.c
 
+qvpushbutton.o: ../Project/qvpushbutton.cpp ../Project/qvpushbutton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qvpushbutton.o ../Project/qvpushbutton.cpp
+
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_qvpushbutton.o: moc_qvpushbutton.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_qvpushbutton.o moc_qvpushbutton.cpp
 
 ####### Install
 

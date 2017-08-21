@@ -9,10 +9,10 @@
 
 #define NAME_SIZE 22
 
-FILE *student_file;
-FILE *class_file;
-FILE *grade_file;
-FILE *info_file;
+extern FILE *student_file;
+extern FILE *class_file;
+extern FILE *grade_file;
+extern FILE *info_file;
 
 typedef struct student {
     char id[12];
@@ -27,7 +27,7 @@ typedef struct student {
     char where[NAME_SIZE];
 } Student;
 
-typedef struct class {
+typedef struct class_ {
     char id[15];
     char name[NAME_SIZE];
     int num;
@@ -50,7 +50,6 @@ typedef struct grade {
     char chairman[NAME_SIZE];
     List *classes;
 } Grade;
-
 
 List *readGradeFromFile();
 
@@ -92,13 +91,13 @@ List *getGradeByTime(List *grade_list, int min, int max);
 
 List *getGradeById(List *grade_list, const char *id);
 
-Student *getStudent(List *class, int position);
+Student *getStudent(List *class_, int position);
 
 Class *getClass(List *grade, int position);
 
 Grade *getGrade(List *grade_list, int position);
 
-void addStudent(Class *class, char *id, char *name, char *gender, char *hometown, char *birth, char *phone, float score,
+void addStudent(Class *class_, char *id, char *name, char *gender, char *hometown, char *birth, char *phone, float score,
                 int age, bool grad, char *where);
 
 void addClass(Grade *grade, char *id, char *name, int num, float age, int gra_num, char *mon_name, char *phone,
