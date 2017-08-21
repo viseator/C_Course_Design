@@ -13,22 +13,22 @@
   <component name="ChangeListManager">
     <list default="true" id="b88e80dd-10cd-4350-bf4f-538f8eb5a155" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/Project" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/Project" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/data.o" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/data.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/mainwindow.o" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/mainwindow.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/moc_mainwindow.o" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/moc_mainwindow.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CTaskProject.dir/data.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CTaskProject.dir/data.c.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CTaskProject" afterPath="$PROJECT_DIR$/cmake-build-debug/CTaskProject" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Project.pro.user" afterPath="$PROJECT_DIR$/Project/Project.pro.user" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/mainwindow.cpp" afterPath="$PROJECT_DIR$/Project/mainwindow.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/mainwindow.h" afterPath="$PROJECT_DIR$/Project/mainwindow.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/mainwindow.ui" afterPath="$PROJECT_DIR$/Project/mainwindow.ui" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/class.dat" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/class.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/grade.dat" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/grade.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/moc_mainwindow.cpp" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/moc_mainwindow.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/student.dat" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/student.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/class.dat" afterPath="$PROJECT_DIR$/cmake-build-debug/class.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/grade.dat" afterPath="$PROJECT_DIR$/cmake-build-debug/grade.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/info.dat" afterPath="$PROJECT_DIR$/cmake-build-debug/info.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/student.dat" afterPath="$PROJECT_DIR$/cmake-build-debug/student.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data.c" afterPath="$PROJECT_DIR$/data.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data.h" afterPath="$PROJECT_DIR$/data.h" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,8 +67,8 @@
           <file leaf-file-name="data.h" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/data.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1443">
-                  <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+                <state relative-caret-position="576">
+                  <caret line="24" column="10" lean-forward="false" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
                   <folding>
                     <element signature="e#43#63#0" expanded="true" />
                   </folding>
@@ -79,8 +79,8 @@
           <file leaf-file-name="data.c" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/data.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="8520">
-                  <caret line="355" column="0" lean-forward="false" selection-start-line="355" selection-start-column="0" selection-end-line="355" selection-end-column="0" />
+                <state relative-caret-position="303">
+                  <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
@@ -213,11 +213,13 @@
       <workItem from="1503208155276" duration="1065000" />
       <workItem from="1503214381181" duration="3513000" />
       <workItem from="1503289369230" duration="407000" />
+      <workItem from="1503321214235" duration="478000" />
+      <workItem from="1503322642606" duration="2146000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42727000" />
+    <option name="totallyTimeSpent" value="45351000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -232,7 +234,7 @@
     <frame x="235" y="136" width="1930" height="1110" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1486631" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15187165" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -261,7 +263,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="21" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/data.c</url>
+          <line>355</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="23" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -518,14 +527,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/info.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -534,18 +535,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/info.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8520">
-          <caret line="355" column="0" lean-forward="false" selection-start-line="355" selection-start-column="0" selection-end-line="355" selection-end-column="0" />
+        <state relative-caret-position="303">
+          <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1443">
-          <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+        <state relative-caret-position="576">
+          <caret line="24" column="10" lean-forward="false" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
           <folding>
             <element signature="e#43#63#0" expanded="true" />
           </folding>

@@ -12,6 +12,8 @@
 #include <QHeaderView>
 #include <QPushButton>
 #include "qvpushbutton.h"
+#include <QModelIndex>
+#include <QVariant>
 
 extern "C"{
 #include "../data.h"
@@ -67,6 +69,7 @@ public slots:
     void onReceiveButton(int position);
     void onBack();
     void onForward();
+    void onDataChanged(QModelIndex index1, QModelIndex index2, QVector<int> vector);
 };
 
 #endif // MAINWINDOW_H

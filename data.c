@@ -272,7 +272,7 @@ List *readClassFromFile(int num) {
         int n;
         fscanf(info_file, "%d", &n);
         if (n == 0) {
-            data->students = NULL;
+            data->students = init_list(sizeof(Student));
         } else {
             data->students = readStudentFromFile(n);
         }
@@ -292,7 +292,7 @@ List *readGradeFromFile() {
         int n;
         fscanf(info_file, "%d", &n);
         if (n == 0) {
-            data->classes = NULL;
+            data->classes = init_list(sizeof(Class));
         } else {
             data->classes = readClassFromFile(n);
         }
@@ -352,6 +352,7 @@ void removeGrade(List* grade_list){
 //    addStudent(getClass(getGrade(grade_list, 3)->classes, 0), "U201614753", "吴迪333", "1", "YUSHAN", "19971024",
 //               "13479343728", 666, 18, false, "Ali");
 //    saveGradeToFile(grade_list);
-
+//    grade_list = readGradeFromFile();
+//    saveGradeToFile(grade_list);
 //    return 0;
 //}

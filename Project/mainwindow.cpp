@@ -6,7 +6,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->backAction, SIGNAL(triggered(bool)), this, SLOT(onBack()));
     connect(ui->forwradAction, SIGNAL(triggered(bool)), this, SLOT(onForward()));
     createActions();
-//    test();
+    onLoad();
+    //    test();
 }
 
 MainWindow::~MainWindow() { delete ui; }
@@ -90,6 +91,7 @@ void MainWindow::showGrades(List *grade_list) {
     currentState = GRADE;
     gradeList = grade_list;
     model = new QStandardItemModel(this);
+    connect(model, SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)), this, SLOT(onDataChanged(QModelIndex,QModelIndex,QVector<int>)));
     model->setHorizontalHeaderItem(0, new QStandardItem(QString("年级编号")));
     model->setHorizontalHeaderItem(1, new QStandardItem(QString("入学时间")));
     model->setHorizontalHeaderItem(2, new QStandardItem(QString("入学人数")));
@@ -127,6 +129,7 @@ void MainWindow::showClasses(List* class_list){
     classList = class_list;
     delete model;
     model = new QStandardItemModel(this);
+    connect(model, SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)), this, SLOT(onDataChanged(QModelIndex,QModelIndex,QVector<int>)));
     model->setHorizontalHeaderItem(0, new QStandardItem(QString("班级编号")));
     model->setHorizontalHeaderItem(1, new QStandardItem(QString("专业名称")));
     model->setHorizontalHeaderItem(2, new QStandardItem(QString("入学人数")));
@@ -169,15 +172,17 @@ void MainWindow::showStudents(List* student_list){
     studentList = student_list;
     delete model;
     model = new QStandardItemModel(this);
+    connect(model, SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)), this, SLOT(onDataChanged(QModelIndex,QModelIndex,QVector<int>)));
     model->setHorizontalHeaderItem(0, new QStandardItem(QString("学号")));
     model->setHorizontalHeaderItem(1, new QStandardItem(QString("姓名")));
     model->setHorizontalHeaderItem(2, new QStandardItem(QString("性别")));
     model->setHorizontalHeaderItem(3, new QStandardItem(QString("籍贯")));
     model->setHorizontalHeaderItem(4, new QStandardItem(QString("出生日期")));
-    model->setHorizontalHeaderItem(5, new QStandardItem(QString("联系电话")));
-    model->setHorizontalHeaderItem(6, new QStandardItem(QString("入学分数")));
-    model->setHorizontalHeaderItem(7, new QStandardItem(QString("毕业与否")));
-    model->setHorizontalHeaderItem(8, new QStandardItem(QString("毕业去向")));
+    model->setHorizontalHeaderItem(5, new QStandardItem(QString("年龄")));
+    model->setHorizontalHeaderItem(6, new QStandardItem(QString("联系电话")));
+    model->setHorizontalHeaderItem(7, new QStandardItem(QString("入学分数")));
+    model->setHorizontalHeaderItem(8, new QStandardItem(QString("毕业与否")));
+    model->setHorizontalHeaderItem(9, new QStandardItem(QString("毕业去向")));
     Node *head = getFirst(student_list);
     while (NULL != head) {
         model->appendRow(MainWindow::readStudentData(head));
@@ -199,6 +204,7 @@ QList<QStandardItem*> MainWindow::readStudentData(Node *studentNode){
     }
     result.append(new QStandardItem(QString::fromUtf8(data->hometown)));
     result.append(new QStandardItem(QString::fromUtf8(data->birth)));
+    result.append(new QStandardItem(QString::number(data->age)));
     result.append(new QStandardItem(QString::fromUtf8(data->phone)));
     result.append(new QStandardItem(QString::number(data->score)));
     result.append(new QStandardItem(data->grad ? QString("是") : QString("否")));
@@ -255,3 +261,123 @@ void MainWindow::onForward(){
         break;
     }
 }
+
+void MainWindow::onDataChanged(QModelIndex index1, QModelIndex index2, QVector<int> vector){
+    int row = index1.row();
+    int col = index1.column();
+    QVariant data = ui->tableView->model()->data(index1);
+    switch (currentState) {
+    case GRADE:
+    {
+        Grade* grade = getGrade(gradeList, row);
+        switch (col) {
+        case 0:
+            strncpy(grade->id, data.toString().toUtf8().data(), 5);
+            break;
+        case 1:
+            strncpy(grade->time, data.toString().toUtf8().data(),9);
+            break;
+        case 2:
+            grade->num = data.toInt();
+            break;
+        case 3:
+            grade->gra_num = data.toInt();
+            break;
+        case 4:
+            strncpy(grade->coun_name, data.toString().toUtf8().data(), NAME_SIZE);
+            break;
+        case 5:
+            strncpy(grade->coun_phone, data.toString().toUtf8().data(), 12);
+            break;
+        case 6:
+            strncpy(grade->chairman, data.toString().toUtf8().data(), NAME_SIZE);
+            break;
+        }
+        break;
+    }
+    case CLASS_:
+    {
+        Class* clas = getClass(classList, row);
+        switch (col) {
+        case 0:
+            strncpy(clas->id, data.toString().toUtf8().data(), 15);
+            break;
+        case 1:
+            strncpy(clas->name, data.toString().toUtf8().data(), NAME_SIZE);
+            break;
+        case 2:
+            clas->num = data.toInt();
+            break;
+        case 3:
+            clas->age = data.toFloat();
+            break;
+        case 4:
+            clas->gra_num = data.toInt();
+            break;
+        case 5:
+            strncpy(clas->mon_name, data.toString().toUtf8().data(), NAME_SIZE);
+            break;
+        case 6:
+            strncpy(clas->phone, data.toString().toUtf8().data(), 12);
+            break;
+        case 7:
+            strncpy(clas->tea_name, data.toString().toUtf8().data(), NAME_SIZE);
+            break;
+        case 8:
+            strncpy(clas->tea_phone, data.toString().toUtf8().data(), 12);
+            break;
+        }
+        break;
+    }
+    case STUDENT:
+        Student* student = getStudent(studentList, row);
+        switch (col) {
+        case 0:
+            strncpy(student->id, data.toString().toUtf8().data(), 12);
+            break;
+        case 1:
+            strncpy(student->name, data.toString().toUtf8().data(), NAME_SIZE);
+            break;
+        case 2:
+            if(data.toString() == "男"){
+                strcpy(student->gender, "1");
+            }
+            if(data.toString() == "女"){
+                strcpy(student->gender, "0");
+            }
+            break;
+        case 3:
+            strncpy(student->hometown, data.toString().toUtf8().data(), NAME_SIZE);
+            break;
+        case 4:
+            strncpy(student->birth, data.toString().toUtf8().data(), 9);
+            break;
+        case 5:
+            student->age = data.toInt();
+            break;
+        case 6:
+            strncpy(student->phone, data.toString().toUtf8().data(),12);
+            break;
+        case 7:
+            student->score = data.toFloat();
+            break;
+        case 8:
+            if(data.toString() == "是"){
+                student->grad = true;
+            }
+            if(data.toString() == "否"){
+                student->grad = false;
+            }
+            break;
+        case 9:
+            strncpy(student->where, data.toString().toUtf8().data(), NAME_SIZE);
+            break;
+        default:
+            break;
+        }
+        break;
+    }
+
+}
+
+
