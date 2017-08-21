@@ -28,6 +28,8 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *backAction;
+    QAction *forwradAction;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QTableView *tableView;
@@ -44,6 +46,12 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(1047, 598);
+        backAction = new QAction(MainWindow);
+        backAction->setObjectName(QStringLiteral("backAction"));
+        backAction->setCheckable(true);
+        forwradAction = new QAction(MainWindow);
+        forwradAction->setObjectName(QStringLiteral("forwradAction"));
+        forwradAction->setCheckable(true);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -79,6 +87,8 @@ public:
         menuBar->addAction(inputMenu->menuAction());
         menuBar->addAction(searchMenu->menuAction());
         menuBar->addAction(statisticMenu->menuAction());
+        mainToolBar->addAction(backAction);
+        mainToolBar->addAction(forwradAction);
 
         retranslateUi(MainWindow);
 
@@ -88,6 +98,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "\345\255\246\347\224\237\344\277\241\346\201\257\347\256\241\347\220\206\347\263\273\347\273\237", Q_NULLPTR));
+        backAction->setText(QApplication::translate("MainWindow", "\345\220\216\351\200\200", Q_NULLPTR));
+        forwradAction->setText(QApplication::translate("MainWindow", "\345\211\215\350\277\233", Q_NULLPTR));
         fileMenu->setTitle(QApplication::translate("MainWindow", "\346\226\207\344\273\266", Q_NULLPTR));
         inputMenu->setTitle(QApplication::translate("MainWindow", "\346\267\273\345\212\240", Q_NULLPTR));
         searchMenu->setTitle(QApplication::translate("MainWindow", "\346\237\245\350\257\242", Q_NULLPTR));

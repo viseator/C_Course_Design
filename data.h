@@ -17,7 +17,7 @@ extern FILE *info_file;
 typedef struct student {
     char id[12];
     char name[NAME_SIZE];
-    char gender[1];
+    char gender[2];
     char hometown[NAME_SIZE];
     char birth[9];
     char phone[12];

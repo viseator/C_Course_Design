@@ -42,13 +42,19 @@ private:
     QAction *searchStudentAction;
     QStandardItemModel *model;
     State currentState;
-    List* currentList;
+    List* gradeList;
+    List* classList;
+    list* studentList;
 
     void test();
     void createActions();
     void showGrades(List* grade_list);
+    void showClasses(List* class_list);
+    void showStudents(List* student_list);
     void setButtons(int num, int pos,const QString &text);
     QList<QStandardItem*> readGradeData(Node *gradeNode);
+    QList<QStandardItem*> readClassData(Node *classNode);
+    QList<QStandardItem*> readStudentData(Node *studentNode);
 public slots:
     void onSave();
     void onLoad();
@@ -59,6 +65,8 @@ public slots:
     void onSearchClass();
     void onSearchStudent();
     void onReceiveButton(int position);
+    void onBack();
+    void onForward();
 };
 
 #endif // MAINWINDOW_H

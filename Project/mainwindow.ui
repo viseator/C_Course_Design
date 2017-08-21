@@ -61,8 +61,26 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="backAction"/>
+   <addaction name="forwradAction"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="backAction">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>后退</string>
+   </property>
+  </action>
+  <action name="forwradAction">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>前进</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

@@ -6,6 +6,5 @@ QVPushButton::QVPushButton(const QString &text, int position)
 }
 
 void QVPushButton::self_clicked(){
-    qDebug() << position;
     emit v_clicked(position);
 }
