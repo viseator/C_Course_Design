@@ -196,6 +196,19 @@ List *getStudentByAge(List *student_list, int min, int max) {
     return result;
 }
 
+List *getStudentByGra(List *student_list, bool gra){
+    List *result = init_list(sizeof(Student));
+    Node *head = getFirst(student_list);
+    while(NULL != head){
+        Student *student = (Student *) head->data;
+        if(student->grad == gra){
+            add(result, student);
+        }
+        head = head->next;
+    }
+    return result;
+}
+
 void openFileForWrite() {
     student_file = fopen("student.dat", "wb");
     class_file = fopen("class.dat", "wb");
@@ -356,6 +369,88 @@ void removeGradeByData(List *grade_list, void *data){
     removeNode(grade_list, data);
 }
 
+List *getAllClass(List *grade_list){
+    List *result = init_list(sizeof(Class));
+    for(int i = 0; i < grade_list->length; i++){
+        appendList(result, getGrade(grade_list, i)->classes);
+    }
+    return result;
+}
+
+List *getAllStudent(List *gradeList){
+    List *result = init_list(sizeof(Student));
+    List *classes = getAllClass(gradeList);
+    for(int i = 0; i < classes->length; i++){
+        appendList(result, getClass(classes, i)->students);
+    }
+    return result;
+}
+
+List *getAllStudentInClass(List *classes){
+    List *result = init_list(sizeof(Student));
+    for(int i = 0; i < classes->length; i++){
+        appendList(result, getClass(classes, i)->students);
+    }
+    return result;
+}
+
+
+void *sortGradeByTime(List *gradeList){
+    Node *head = gradeList->head;
+    Node *tail = head;
+    while(NULL != tail->next){
+        Node *min= tail->next;
+        Node *p = min->next;
+        while(NULL != p){
+            if(strcmp(((Grade*) p->data)->id, ((Grade*)min->data)->id) < 0){
+                min = p;
+            }
+            p = p->next;
+        }
+        void *data = min->data;
+        min->data = tail->next->data;
+        tail->next->data = data;
+        tail = tail->next;
+    }
+}
+
+void *sortClassById(List *classList){
+    Node *head = classList->head;
+    Node *tail = head;
+    while(NULL != tail->next){
+        Node *min= tail->next;
+        Node *p = min->next;
+        while(NULL != p){
+            if(strcmp(((Class*) p->data)->id, ((Class*)min->data)->id) < 0){
+                min = p;
+            }
+            p = p->next;
+        }
+        void *data = min->data;
+        min->data = tail->next->data;
+        tail->next->data = data;
+        tail = tail->next;
+    }
+}
+
+void *sortStudentById(List *studentList){
+    Node *head = studentList->head;
+    Node *tail = head;
+    while(NULL != tail->next){
+        Node *min= tail->next;
+        Node *p = min->next;
+        while(NULL != p){
+            if(strcmp(((Student*) p->data)->id, ((Student*)min->data)->id) < 0){
+                min = p;
+            }
+            p = p->next;
+        }
+        void *data = min->data;
+        min->data = tail->next->data;
+        tail->next->data = data;
+        tail = tail->next;
+    }
+}
 
 //int main(void) {
 //    List *grade_list = init_list(sizeof(Grade));

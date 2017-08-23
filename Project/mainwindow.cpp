@@ -60,6 +60,14 @@ void MainWindow::createActions() {
     ui->searchMenu->addAction(searchClassAction);
     ui->searchMenu->addAction(searchStudentAction);
 
+
+    sortGradeAction = new QAction("年级排序", this);
+    sortClassAction = new QAction("班级排序", this);
+    sortStudentAction = new QAction("学生排序", this);
+    ui->sortMenu->addAction(sortGradeAction);
+    ui->sortMenu->addAction(sortClassAction);
+    ui->sortMenu->addAction(sortStudentAction);
+
     connect(saveAction, &QAction::triggered, this, &MainWindow::onSave);
     connect(loadAction, &QAction::triggered, this, &MainWindow::onLoad);
     connect(inputGradeAction, &QAction::triggered, this, &MainWindow::onInputGrade);
@@ -68,6 +76,9 @@ void MainWindow::createActions() {
     connect(searchGradeAction, &QAction::triggered, this, &MainWindow::onSearchGrade);
     connect(searchClassAction, &QAction::triggered, this, &MainWindow::onSearchClass);
     connect(searchStudentAction, &QAction::triggered, this, &MainWindow::onSearchStudent);
+    connect(sortGradeAction, &QAction::triggered, this, &MainWindow::onGradeSort);
+    connect(sortClassAction, &QAction::triggered, this, &MainWindow::onClassSort);
+    connect(sortStudentAction, &QAction::triggered, this, &MainWindow::onStudentSort);
 }
 
 void MainWindow::onSave() {
@@ -108,9 +119,42 @@ void MainWindow::onSearchGrade() {
     gradeDialog->show();
 }
 
-void MainWindow::onSearchClass() {}
+void MainWindow::onSearchClass() {
+    if(NULL == classDialog){
+        classDialog = new ClassDialog(this);
+        connect(classDialog, SIGNAL(accept(QString,QString,QString,QString,QString)), this, SLOT(onClassAc(QString,QString,QString,QString,QString)));
+    }
+    classDialog->show();
+}
 
-void MainWindow::onSearchStudent() {}
+void MainWindow::onSearchStudent() {
+    if(NULL == studentDialog){
+        studentDialog = new StudentDialog(this);
+        connect(studentDialog, SIGNAL(accept(QString,QString,QString,QString,QString,QString,QString,QString)), this, SLOT(onStudentAc(QString,QString,QString,QString,QString,QString,QString,QString)));
+    }
+    studentDialog->show();
+}
+
+void MainWindow::onGradeSort(){
+    if(currentState == GRADE){
+        sortGradeByTime(gradeList);
+        showGrades(gradeList);
+    }
+}
+
+void MainWindow::onClassSort(){
+    if(currentState == CLASS_){
+        sortClassById(classList);
+        showClasses(classList);
+    }
+}
+
+void MainWindow::onStudentSort(){
+    if(currentState == STUDENT){
+        sortStudentById(studentList);
+        showStudents(studentList);
+    }
+}
 
 void MainWindow::showGrades(List *grade_list) {
     currentState = GRADE;
@@ -435,6 +479,7 @@ void MainWindow::onDelete(){
             datas.push_back(getData(list, *it));
         }
         for(void *data : datas){
+            removeNodeOnly(classList, data);
             removeClassByData(gradeList, data);
         }
         showClasses(classList);
@@ -446,6 +491,7 @@ void MainWindow::onDelete(){
             datas.push_back(getData(list, *it));
         }
         for(void *data : datas){
+            removeNodeOnly(studentList, data);
             removeStudentByData(gradeList, data);
         }
         showStudents(studentList);
@@ -470,3 +516,35 @@ void MainWindow::onGradeAc(QString s1, QString s2, QString s3, QString s4, QStri
     showGrades(result);
 }
 
+void MainWindow::onClassAc(QString s1, QString s2, QString s3, QString s4, QString s5){
+    List *result;
+    result = getClassById(getAllClass(gradeList), s1.toUtf8().data());
+    result = getClassByName(result, s2.toUtf8().data());
+    result = getClassByTeaName(result, s3.toUtf8().data());
+    if(s4 != "" && s5 != ""){
+        result = getClassByNum(result, s4.toInt(), s5.toInt());
+    }
+    showClasses(result);
+}
+
+void MainWindow::onStudentAc(QString s1, QString s2, QString s3, QString s4, QString s5, QString s6, QString s7, QString s8){
+    List *result;
+    if(s3 != "" && s4 != ""){
+        result = getGradeByTime(gradeList, s3.toInt(), s4.toInt());
+    } else {
+        result = gradeList;
+    }
+    result = getClassByName(getAllClass(result),s2.toUtf8().data());
+    result = getAllStudentInClass(result);
+    result = getStudentByName(result, s1.toUtf8().data());
+    if(s5 != "" && s6 != ""){
+        result = getStudentByAge(result, s5.toInt(), s6.toInt());
+    }
+    result = getStudentByWhere(result, s8.toUtf8().data());
+    if(s7 == "是"){
+        result = getStudentByGra(result, true);
+    } else if (s7 == "否"){
+        result = getStudentByGra(result, false);
+    }
+    showStudents(result);
+}

@@ -27,16 +27,16 @@ class Ui_GradeDialog
 {
 public:
     QDialogButtonBox *buttonBox;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QGridLayout *gridLayout;
     QLabel *label_3;
     QTextEdit *textEdit_2;
     QLabel *label;
     QTextEdit *textEdit_3;
     QLabel *label_2;
-    QTextEdit *textEdit;
     QTextEdit *textEdit_4;
     QTextEdit *textEdit_5;
+    QTextEdit *textEdit;
 
     void setupUi(QDialog *GradeDialog)
     {
@@ -48,44 +48,54 @@ public:
         buttonBox->setGeometry(QRect(60, 270, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
-        widget = new QWidget(GradeDialog);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(50, 30, 271, 224));
+        layoutWidget = new QWidget(GradeDialog);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(50, 30, 271, 224));
         QFont font;
         font.setPointSize(17);
-        widget->setFont(font);
-        gridLayout = new QGridLayout(widget);
+        layoutWidget->setFont(font);
+        gridLayout = new QGridLayout(layoutWidget);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setHorizontalSpacing(6);
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        label_3 = new QLabel(widget);
+        label_3 = new QLabel(layoutWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setFont(font);
 
         gridLayout->addWidget(label_3, 3, 0, 1, 1);
 
-        textEdit_2 = new QTextEdit(widget);
+        textEdit_2 = new QTextEdit(layoutWidget);
         textEdit_2->setObjectName(QStringLiteral("textEdit_2"));
 
         gridLayout->addWidget(textEdit_2, 2, 1, 1, 1);
 
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QStringLiteral("label"));
 
         gridLayout->addWidget(label, 1, 0, 1, 1);
 
-        textEdit_3 = new QTextEdit(widget);
+        textEdit_3 = new QTextEdit(layoutWidget);
         textEdit_3->setObjectName(QStringLiteral("textEdit_3"));
 
         gridLayout->addWidget(textEdit_3, 3, 1, 1, 1);
 
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setFont(font);
 
         gridLayout->addWidget(label_2, 2, 0, 1, 1);
 
-        textEdit = new QTextEdit(widget);
+        textEdit_4 = new QTextEdit(layoutWidget);
+        textEdit_4->setObjectName(QStringLiteral("textEdit_4"));
+
+        gridLayout->addWidget(textEdit_4, 2, 2, 1, 1);
+
+        textEdit_5 = new QTextEdit(layoutWidget);
+        textEdit_5->setObjectName(QStringLiteral("textEdit_5"));
+
+        gridLayout->addWidget(textEdit_5, 3, 2, 1, 1);
+
+        textEdit = new QTextEdit(layoutWidget);
         textEdit->setObjectName(QStringLiteral("textEdit"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
@@ -93,17 +103,7 @@ public:
         sizePolicy.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
         textEdit->setSizePolicy(sizePolicy);
 
-        gridLayout->addWidget(textEdit, 1, 1, 1, 1);
-
-        textEdit_4 = new QTextEdit(widget);
-        textEdit_4->setObjectName(QStringLiteral("textEdit_4"));
-
-        gridLayout->addWidget(textEdit_4, 2, 2, 1, 1);
-
-        textEdit_5 = new QTextEdit(widget);
-        textEdit_5->setObjectName(QStringLiteral("textEdit_5"));
-
-        gridLayout->addWidget(textEdit_5, 3, 2, 1, 1);
+        gridLayout->addWidget(textEdit, 1, 1, 1, 2);
 
 
         retranslateUi(GradeDialog);
@@ -115,7 +115,7 @@ public:
 
     void retranslateUi(QDialog *GradeDialog)
     {
-        GradeDialog->setWindowTitle(QApplication::translate("GradeDialog", "Dialog", Q_NULLPTR));
+        GradeDialog->setWindowTitle(QApplication::translate("GradeDialog", "\346\237\245\346\211\276\345\271\264\347\272\247", Q_NULLPTR));
         label_3->setText(QApplication::translate("GradeDialog", "\345\205\245\345\255\246\344\272\272\346\225\260", Q_NULLPTR));
         label->setText(QApplication::translate("GradeDialog", "\345\271\264\347\272\247\347\274\226\345\217\267", Q_NULLPTR));
         label_2->setText(QApplication::translate("GradeDialog", "\345\205\245\345\255\246\346\227\266\351\227\264", Q_NULLPTR));

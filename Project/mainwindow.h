@@ -21,6 +21,8 @@
 #include <vector>
 #include "ui_searchgrade.h"
 #include "gradedialog.h"
+#include "classdialog.h"
+#include "studentdialog.h"
 extern "C"{
 #include "../data.h"
 }
@@ -48,14 +50,17 @@ private:
     QAction *searchGradeAction;
     QAction *searchClassAction;
     QAction *searchStudentAction;
+    QAction *sortGradeAction;
+    QAction *sortClassAction;
+    QAction *sortStudentAction;
     QStandardItemModel *model;
     State currentState;
     List* gradeList = NULL;
     List* classList = NULL;
     list* studentList = NULL;
     GradeDialog *gradeDialog = NULL;
-
-
+    ClassDialog *classDialog = NULL;
+    StudentDialog *studentDialog = NULL;
 
     void test();
     void createActions();
@@ -81,6 +86,12 @@ public slots:
     void onDataChanged(QModelIndex index1, QModelIndex index2, QVector<int> vector);
     void onDelete();
     void onGradeAc(QString, QString, QString, QString, QString);
+    void onClassAc(QString, QString, QString, QString, QString);
+    void onStudentAc(QString, QString, QString, QString, QString, QString, QString, QString);
+    void onGradeSort();
+    void onClassSort();
+    void onStudentSort();
+
 };
 
 #endif // MAINWINDOW_H

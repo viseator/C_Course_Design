@@ -49,10 +49,16 @@
      <string>统计</string>
     </property>
    </widget>
+   <widget class="QMenu" name="sortMenu">
+    <property name="title">
+     <string>排序</string>
+    </property>
+   </widget>
    <addaction name="fileMenu"/>
    <addaction name="inputMenu"/>
    <addaction name="searchMenu"/>
    <addaction name="statisticMenu"/>
+   <addaction name="sortMenu"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

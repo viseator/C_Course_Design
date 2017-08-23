@@ -77,6 +77,8 @@ List *getStudentByWhere(List *student_list, const char *where);
 
 List *getStudentByName(List *student_list, const char *name);
 
+List *getStudentByGra(List *student_list, bool gra);
+
 List *getClassByNum(List *class_list, int min, int max);
 
 List *getClassByTeaName(List *class_list, const char *name);
@@ -113,5 +115,17 @@ void removeClassByData(List *grade_list, void *data);
 void removeStudentByData(List *grade_list, void *data);
 
 void removeStudentFromClass(List *class_list, void *data);
+
+List *getAllClass(List*);
+
+List *getAllStudent(List *gradeList);
+
+List *getAllStudentInClass(List *classes);
+
+void *sortGradeByTime(List *gradeList);
+
+void *sortClassById(List *classList);
+
+void *sortStudentById(List *studentList);
 
 #endif

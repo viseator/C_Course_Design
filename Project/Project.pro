@@ -30,7 +30,9 @@ SOURCES += \
     ../linkedlist.c \
     ../utils.c \
     qvpushbutton.cpp \
-    gradedialog.cpp
+    gradedialog.cpp \
+    classdialog.cpp \
+    studentdialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,8 +40,12 @@ HEADERS += \
     ../linkedlist.h \
     ../utils.h \
     qvpushbutton.h \
-    gradedialog.h
+    gradedialog.h \
+    classdialog.h \
+    studentdialog.h
 
 FORMS += \
         mainwindow.ui \
-    searchgrade.ui
+    searchgrade.ui \
+    searchclass.ui \
+    searchstudent.ui

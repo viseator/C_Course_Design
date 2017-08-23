@@ -30,8 +30,12 @@ Node *getNode(List *list, unsigned position);
 
 void removeNode(List *list, void *data);
 
+void removeNodeOnly(List *list, void *data);
+
 void removePos(List* list, int position);
 
 Node *getFirst(List *list);
+
+void appendList(List *dst, List *src);
 
 #endif

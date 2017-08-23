@@ -39,6 +39,7 @@ public:
     QMenu *inputMenu;
     QMenu *searchMenu;
     QMenu *statisticMenu;
+    QMenu *sortMenu;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -79,6 +80,8 @@ public:
         searchMenu->setObjectName(QStringLiteral("searchMenu"));
         statisticMenu = new QMenu(menuBar);
         statisticMenu->setObjectName(QStringLiteral("statisticMenu"));
+        sortMenu = new QMenu(menuBar);
+        sortMenu->setObjectName(QStringLiteral("sortMenu"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -91,6 +94,7 @@ public:
         menuBar->addAction(inputMenu->menuAction());
         menuBar->addAction(searchMenu->menuAction());
         menuBar->addAction(statisticMenu->menuAction());
+        menuBar->addAction(sortMenu->menuAction());
         mainToolBar->addAction(backAction);
         mainToolBar->addAction(forwradAction);
         mainToolBar->addAction(deleteAction);
@@ -110,6 +114,7 @@ public:
         inputMenu->setTitle(QApplication::translate("MainWindow", "\346\267\273\345\212\240", Q_NULLPTR));
         searchMenu->setTitle(QApplication::translate("MainWindow", "\346\237\245\350\257\242", Q_NULLPTR));
         statisticMenu->setTitle(QApplication::translate("MainWindow", "\347\273\237\350\256\241", Q_NULLPTR));
+        sortMenu->setTitle(QApplication::translate("MainWindow", "\346\216\222\345\272\217", Q_NULLPTR));
     } // retranslateUi
 
 };
