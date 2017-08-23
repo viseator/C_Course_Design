@@ -19,7 +19,7 @@ void addGrade(List *list, char *id, char *time, int num, int gra_num, char *coun
     add(list, grade);
 }
 
-void addClass(Grade *grade, char *id, char *name, int num, float age, int gra_num, char *mon_name, char *phone,
+void addClass(List *class_list, char *id, char *name, int num, float age, int gra_num, char *mon_name, char *phone,
               char *tea_name, char *tea_phone) {
     Class *class = (Class *) malloc(sizeof(Class));
     strncpy(class->id, id, 15);
@@ -32,10 +32,10 @@ void addClass(Grade *grade, char *id, char *name, int num, float age, int gra_nu
     strncpy(class->tea_name, tea_name, NAME_SIZE);
     strncpy(class->tea_phone, tea_phone, 12);
     class->students = init_list(sizeof(Student));
-    add(grade->classes, class);
+    add(class_list, class);
 }
 
-void addStudent(Class *class, char *id, char *name, char *gender, char *hometown, char *birth, char *phone,
+void addStudent(List *student_list, char *id, char *name, char *gender, char *hometown, char *birth, char *phone,
                 float score, int age, bool grad, char *where) {
     Student *student = (Student *) malloc(sizeof(Student));
     strncpy(student->id, id, 12);
@@ -48,7 +48,7 @@ void addStudent(Class *class, char *id, char *name, char *gender, char *hometown
     student->grad = grad;
     student->age = age;
     strncpy(student->where, where, NAME_SIZE);
-    add(class->students, student);
+    add(student_list, student);
 }
 
 Grade *getGrade(List *grade_list, int position) {
@@ -330,6 +330,32 @@ void removeGrade(List* grade_list){
         removeNode(grade_list,head->next);
     }
 }
+
+void removeStudentFromClass(List *class_list, void *data){
+    for(int i = 0; i < class_list->length; i++){
+        List *student_list = getClass(class_list, i)->students;
+        removeNode(student_list, data);
+    }
+}
+
+void removeStudentByData(List *grade_list, void *data){
+    for(int i = 0; i < grade_list->length; i++){
+        List *class_list = getGrade(grade_list, i)->classes;
+        removeStudentFromClass(class_list, data);
+    }
+}
+
+void removeClassByData(List *grade_list, void *data){
+    for(int i = 0; i < grade_list->length; i++){
+        List *class_list = getGrade(grade_list, i)->classes;
+        removeNode(class_list, data);
+    }
+}
+
+void removeGradeByData(List *grade_list, void *data){
+    removeNode(grade_list, data);
+}
+
 
 //int main(void) {
 //    List *grade_list = init_list(sizeof(Grade));

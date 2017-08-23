@@ -28,7 +28,9 @@ void *getData(List *list, unsigned position);
 
 Node *getNode(List *list, unsigned position);
 
-void removeNode(List *list, Node *node);
+void removeNode(List *list, void *data);
+
+void removePos(List* list, int position);
 
 Node *getFirst(List *list);
 

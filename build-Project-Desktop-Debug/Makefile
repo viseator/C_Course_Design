@@ -55,16 +55,20 @@ SOURCES       = ../Project/main.cpp \
 		../data.c \
 		../linkedlist.c \
 		../utils.c \
-		../Project/qvpushbutton.cpp moc_mainwindow.cpp \
-		moc_qvpushbutton.cpp
+		../Project/qvpushbutton.cpp \
+		../Project/gradedialog.cpp moc_mainwindow.cpp \
+		moc_qvpushbutton.cpp \
+		moc_gradedialog.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		data.o \
 		linkedlist.o \
 		utils.o \
 		qvpushbutton.o \
+		gradedialog.o \
 		moc_mainwindow.o \
-		moc_qvpushbutton.o
+		moc_qvpushbutton.o \
+		moc_gradedialog.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
@@ -342,12 +346,14 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		../data.h \
 		../linkedlist.h \
 		../utils.h \
-		../Project/qvpushbutton.h ../Project/main.cpp \
+		../Project/qvpushbutton.h \
+		../Project/gradedialog.h ../Project/main.cpp \
 		../Project/mainwindow.cpp \
 		../data.c \
 		../linkedlist.c \
 		../utils.c \
-		../Project/qvpushbutton.cpp
+		../Project/qvpushbutton.cpp \
+		../Project/gradedialog.cpp
 QMAKE_TARGET  = Project
 DESTDIR       = 
 TARGET        = Project
@@ -356,7 +362,7 @@ TARGET        = Project
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_searchgrade.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../Project/Project.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mkspecs/features/spec_pre.prf \
@@ -929,9 +935,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Project/mainwindow.h ../data.h ../linkedlist.h ../utils.h ../Project/qvpushbutton.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Project/main.cpp ../Project/mainwindow.cpp ../data.c ../linkedlist.c ../utils.c ../Project/qvpushbutton.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Project/mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Project/mainwindow.h ../data.h ../linkedlist.h ../utils.h ../Project/qvpushbutton.h ../Project/gradedialog.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Project/main.cpp ../Project/mainwindow.cpp ../data.c ../linkedlist.c ../utils.c ../Project/qvpushbutton.cpp ../Project/gradedialog.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Project/mainwindow.ui ../Project/searchgrade.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -963,10 +969,12 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/qt/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -Wall -W -dM -E -o moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_qvpushbutton.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_qvpushbutton.cpp moc_gradedialog.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_qvpushbutton.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_qvpushbutton.cpp moc_gradedialog.cpp
 moc_mainwindow.cpp: ../Project/qvpushbutton.h \
+		ui_searchgrade.h \
+		../Project/gradedialog.h \
 		../data.h \
 		../linkedlist.h \
 		../utils.h \
@@ -980,14 +988,24 @@ moc_qvpushbutton.cpp: ../Project/qvpushbutton.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/viseator/study/CTaskProject/Project -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.1.1 -I/usr/include/c++/7.1.1/x86_64-pc-linux-gnu -I/usr/include/c++/7.1.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/include-fixed -I/usr/include ../Project/qvpushbutton.h -o moc_qvpushbutton.cpp
 
+moc_gradedialog.cpp: ui_searchgrade.h \
+		../Project/gradedialog.h \
+		moc_predefs.h \
+		/usr/bin/moc
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/viseator/study/CTaskProject/Project -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.1.1 -I/usr/include/c++/7.1.1/x86_64-pc-linux-gnu -I/usr/include/c++/7.1.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/include-fixed -I/usr/include ../Project/gradedialog.h -o moc_gradedialog.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_mainwindow.h ui_searchgrade.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) ui_mainwindow.h ui_searchgrade.h
 ui_mainwindow.h: ../Project/mainwindow.ui \
 		/usr/bin/uic
 	/usr/bin/uic ../Project/mainwindow.ui -o ui_mainwindow.h
+
+ui_searchgrade.h: ../Project/searchgrade.ui \
+		/usr/bin/uic
+	/usr/bin/uic ../Project/searchgrade.ui -o ui_searchgrade.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -1001,6 +1019,8 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 main.o: ../Project/main.cpp ../Project/mainwindow.h \
 		../Project/qvpushbutton.h \
+		ui_searchgrade.h \
+		../Project/gradedialog.h \
 		../data.h \
 		../linkedlist.h \
 		../utils.h
@@ -1008,6 +1028,8 @@ main.o: ../Project/main.cpp ../Project/mainwindow.h \
 
 mainwindow.o: ../Project/mainwindow.cpp ../Project/mainwindow.h \
 		../Project/qvpushbutton.h \
+		ui_searchgrade.h \
+		../Project/gradedialog.h \
 		../data.h \
 		../linkedlist.h \
 		../utils.h \
@@ -1028,11 +1050,18 @@ utils.o: ../utils.c ../utils.h
 qvpushbutton.o: ../Project/qvpushbutton.cpp ../Project/qvpushbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qvpushbutton.o ../Project/qvpushbutton.cpp
 
+gradedialog.o: ../Project/gradedialog.cpp ../Project/gradedialog.h \
+		ui_searchgrade.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gradedialog.o ../Project/gradedialog.cpp
+
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
 moc_qvpushbutton.o: moc_qvpushbutton.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_qvpushbutton.o moc_qvpushbutton.cpp
+
+moc_gradedialog.o: moc_gradedialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_gradedialog.o moc_gradedialog.cpp
 
 ####### Install
 

@@ -1,39 +1,43 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     connect(ui->backAction, SIGNAL(triggered(bool)), this, SLOT(onBack()));
     connect(ui->forwradAction, SIGNAL(triggered(bool)), this, SLOT(onForward()));
+    connect(ui->deleteAction,SIGNAL(triggered(bool)), this, SLOT(onDelete()));
     createActions();
     onLoad();
+
+
     //    test();
 }
 
 MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::test() {
-    List *grade_list = init_list(sizeof(Grade));
-    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-    addClass((getGrade(grade_list, 2)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234",
-             "Yuan", "12312341234");
-    addClass((getGrade(grade_list, 2)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234",
-             "Yuan", "12312341234");
-    addClass((getGrade(grade_list, 3)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234",
-             "Yuan", "12312341234");
-    addStudent(getClass(getGrade(grade_list, 2)->classes, 1), "U201614753", "吴迪111", "1",
-               "YUSHAN", "19971024", "13479343728", 666, 18, false, "Ali");
-    addStudent(getClass(getGrade(grade_list, 2)->classes, 0), "U201614753", "吴迪222", "1",
-               "YUSHAN", "19971024", "13479343728", 666, 18, false, "Ali");
-    addStudent(getClass(getGrade(grade_list, 3)->classes, 0), "U201614753", "吴迪333", "1",
-               "YUSHAN", "19971024", "13479343728", 666, 18, false, "Ali");
-    saveGradeToFile(grade_list);
-    showGrades(grade_list);
+    //    List *grade_list = init_list(sizeof(Grade));
+    //    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
+    //    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
+    //    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
+    //    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
+    //    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
+    //    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
+    //    addClass((getGrade(grade_list, 2)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234",
+    //             "Yuan", "12312341234");
+    //    addClass((getGrade(grade_list, 2)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234",
+    //             "Yuan", "12312341234");
+    //    addClass((getGrade(grade_list, 3)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234",
+    //             "Yuan", "12312341234");
+    //    addStudent(getClass(getGrade(grade_list, 2)->classes, 1), "U201614753", "吴迪111", "1",
+    //               "YUSHAN", "19971024", "13479343728", 666, 18, false, "Ali");
+    //    addStudent(getClass(getGrade(grade_list, 2)->classes, 0), "U201614753", "吴迪222", "1",
+    //               "YUSHAN", "19971024", "13479343728", 666, 18, false, "Ali");
+    //    addStudent(getClass(getGrade(grade_list, 3)->classes, 0), "U201614753", "吴迪333", "1",
+    //               "YUSHAN", "19971024", "13479343728", 666, 18, false, "Ali");
+    //    saveGradeToFile(grade_list);
+    //    showGrades(grade_list);
 }
 
 void MainWindow::createActions() {
@@ -75,13 +79,34 @@ void MainWindow::onLoad() {
     showGrades(gradeList);
 }
 
-void MainWindow::onInputGrade() {}
+void MainWindow::onInputGrade() {
+    if(currentState == GRADE){
+        addGrade(gradeList, "", "", 0, 0, "", "", "");
+        showGrades(gradeList);
+    }
+}
 
-void MainWindow::onInputClass() {}
+void MainWindow::onInputClass() {
+    if(NULL != classList && currentState == CLASS_){
+        addClass(classList, "", "", 0, 0, 0, "", "", "", "");
+        showClasses(classList);
+    }
+}
 
-void MainWindow::onInputStudent() {}
+void MainWindow::onInputStudent() {
+    if(NULL != studentList && currentState == STUDENT){
+        addStudent(studentList,"", "", "", "", "", "", 0, 0, false, "");
+        showStudents(studentList);
+    }
+}
 
-void MainWindow::onSearchGrade() {}
+void MainWindow::onSearchGrade() {
+    if(NULL == gradeDialog){
+        gradeDialog = new GradeDialog(this);
+        connect(gradeDialog, SIGNAL(accept(QString,QString,QString,QString,QString)),this, SLOT(onGradeAc(QString,QString,QString,QString,QString)));
+    }
+    gradeDialog->show();
+}
 
 void MainWindow::onSearchClass() {}
 
@@ -380,4 +405,68 @@ void MainWindow::onDataChanged(QModelIndex index1, QModelIndex index2, QVector<i
 
 }
 
+void MainWindow::onDelete(){
+    QModelIndexList selection = ui->tableView->selectionModel()->selectedIndexes();
+    std::set<int> rows = std::set<int>();
+    for(int i=0; i< selection.count(); i++)
+    {
+        QModelIndex index = selection.at(i);
+        rows.insert(index.row());
+    }
+
+    std::vector<void*> datas = std::vector<void*>();
+    List *list;
+    switch (currentState) {
+    case GRADE:
+        list = gradeList;
+        for(std::set<int>::reverse_iterator it = rows.rbegin(); it != rows.rend(); ++it){
+            //            removePos(list, *it);
+            datas.push_back(getData(list, *it));
+        }
+        for(void *data : datas){
+            removeGradeByData(gradeList, data);
+        }
+        showGrades(gradeList);
+        break;
+    case CLASS_:
+        list = classList;
+        for(std::set<int>::reverse_iterator it = rows.rbegin(); it != rows.rend(); ++it){
+            //            removePos(list, *it);
+            datas.push_back(getData(list, *it));
+        }
+        for(void *data : datas){
+            removeClassByData(gradeList, data);
+        }
+        showClasses(classList);
+        break;
+    case STUDENT:
+        list = studentList;
+        for(std::set<int>::reverse_iterator it = rows.rbegin(); it != rows.rend(); ++it){
+            //            removePos(list, *it);
+            datas.push_back(getData(list, *it));
+        }
+        for(void *data : datas){
+            removeStudentByData(gradeList, data);
+        }
+        showStudents(studentList);
+        break;
+    default:
+        break;
+    }
+
+
+
+}
+
+void MainWindow::onGradeAc(QString s1, QString s2, QString s3, QString s4, QString s5){
+    List* result;
+    result = getGradeById(gradeList, s1.toUtf8().data());
+    if(s2 != "" && s3 != ""){
+        result = getGradeByNum(result, s2.toInt(), s3.toInt());
+    }
+    if(s4 != "" && s5 != ""){
+        result = getGradeByTime(result, s4.toInt(), s5.toInt());
+    }
+    showGrades(result);
+}
 

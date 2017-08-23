@@ -14,7 +14,13 @@
 #include "qvpushbutton.h"
 #include <QModelIndex>
 #include <QVariant>
-
+#include <set>
+#include <QDialog>
+#include <QLabel>
+#include <QTextEdit>
+#include <vector>
+#include "ui_searchgrade.h"
+#include "gradedialog.h"
 extern "C"{
 #include "../data.h"
 }
@@ -44,9 +50,12 @@ private:
     QAction *searchStudentAction;
     QStandardItemModel *model;
     State currentState;
-    List* gradeList;
-    List* classList;
-    list* studentList;
+    List* gradeList = NULL;
+    List* classList = NULL;
+    list* studentList = NULL;
+    GradeDialog *gradeDialog = NULL;
+
+
 
     void test();
     void createActions();
@@ -70,6 +79,8 @@ public slots:
     void onBack();
     void onForward();
     void onDataChanged(QModelIndex index1, QModelIndex index2, QVector<int> vector);
+    void onDelete();
+    void onGradeAc(QString, QString, QString, QString, QString);
 };
 
 #endif // MAINWINDOW_H

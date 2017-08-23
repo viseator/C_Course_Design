@@ -97,13 +97,21 @@ Class *getClass(List *grade, int position);
 
 Grade *getGrade(List *grade_list, int position);
 
-void addStudent(Class *class_, char *id, char *name, char *gender, char *hometown, char *birth, char *phone, float score,
+void addStudent(List *list, char *id, char *name, char *gender, char *hometown, char *birth, char *phone, float score,
                 int age, bool grad, char *where);
 
-void addClass(Grade *grade, char *id, char *name, int num, float age, int gra_num, char *mon_name, char *phone,
+void addClass(List *list, char *id, char *name, int num, float age, int gra_num, char *mon_name, char *phone,
               char *tea_name, char *tea_phone);
 
 void
 addGrade(List *list, char *id, char *time, int num, int gra_num, char *coun_name, char *coun_phone, char *chairman);
+
+void removeGradeByData(List *grade_list, void *data);
+
+void removeClassByData(List *grade_list, void *data);
+
+void removeStudentByData(List *grade_list, void *data);
+
+void removeStudentFromClass(List *class_list, void *data);
 
 #endif

@@ -29,14 +29,17 @@ SOURCES += \
     ../data.c \
     ../linkedlist.c \
     ../utils.c \
-    qvpushbutton.cpp
+    qvpushbutton.cpp \
+    gradedialog.cpp
 
 HEADERS += \
         mainwindow.h \
     ../data.h \
     ../linkedlist.h \
     ../utils.h \
-    qvpushbutton.h
+    qvpushbutton.h \
+    gradedialog.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    searchgrade.ui

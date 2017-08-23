@@ -57,14 +57,29 @@ Node *getNode(List *list, unsigned position) {
     return head;
 }
 
-void removeNode(List *list, Node *node) {
+void removeNode(List *list, void *data) {
+    if(list->length == 0) return;
     Node *head = list->head;
-    while (head->next != node) {
+    while (head->next->data != data) {
+        head = head->next;
+        if(NULL == head->next) return;
+    }
+    Node *newNext = head->next->next;
+    free(head->next->data);
+    free(head->next);
+    head->next = newNext;
+    --list->length;
+}
+
+void removePos(List *list, int position){
+    Node *head = list->head;
+    while(position--){
         head = head->next;
     }
-    head->next = node->next;
-    free(node->data);
-    free(node);
+    Node *newNext = head->next->next;
+    free(head->next->data);
+    free(head->next);
+    head->next = newNext;
     --list->length;
 }
 

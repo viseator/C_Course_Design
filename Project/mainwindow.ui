@@ -63,6 +63,7 @@
    </attribute>
    <addaction name="backAction"/>
    <addaction name="forwradAction"/>
+   <addaction name="deleteAction"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="backAction">
@@ -79,6 +80,14 @@
    </property>
    <property name="text">
     <string>前进</string>
+   </property>
+  </action>
+  <action name="deleteAction">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>删除</string>
    </property>
   </action>
  </widget>

@@ -12,23 +12,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b88e80dd-10cd-4350-bf4f-538f8eb5a155" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Project/gradedialog.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Project/gradedialog.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Project/searchgrade.ui" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/Project" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/Project" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/data.o" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/data.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/linkedlist.o" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/linkedlist.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/main.o" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/main.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/mainwindow.o" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/mainwindow.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/moc_mainwindow.o" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/moc_mainwindow.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CTaskProject.dir/data.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CTaskProject.dir/data.c.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CTaskProject" afterPath="$PROJECT_DIR$/cmake-build-debug/CTaskProject" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Project.pro" afterPath="$PROJECT_DIR$/Project/Project.pro" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Project.pro.user" afterPath="$PROJECT_DIR$/Project/Project.pro.user" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/mainwindow.cpp" afterPath="$PROJECT_DIR$/Project/mainwindow.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/mainwindow.h" afterPath="$PROJECT_DIR$/Project/mainwindow.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/mainwindow.ui" afterPath="$PROJECT_DIR$/Project/mainwindow.ui" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/Makefile" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/Makefile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/class.dat" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/class.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/grade.dat" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/grade.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/info.dat" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/info.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/moc_mainwindow.cpp" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/moc_mainwindow.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/student.dat" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/student.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/class.dat" afterPath="$PROJECT_DIR$/cmake-build-debug/class.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/grade.dat" afterPath="$PROJECT_DIR$/cmake-build-debug/grade.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/student.dat" afterPath="$PROJECT_DIR$/cmake-build-debug/student.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build-Project-Desktop-Debug/ui_mainwindow.h" afterPath="$PROJECT_DIR$/build-Project-Desktop-Debug/ui_mainwindow.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data.c" afterPath="$PROJECT_DIR$/data.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data.h" afterPath="$PROJECT_DIR$/data.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/linkedlist.c" afterPath="$PROJECT_DIR$/linkedlist.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/linkedlist.h" afterPath="$PROJECT_DIR$/linkedlist.h" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,8 +64,8 @@
           <file leaf-file-name="linkedlist.h" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/linkedlist.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="792">
-                  <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+                <state relative-caret-position="720">
+                  <caret line="30" column="38" lean-forward="false" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
                   <folding>
                     <element signature="e#110#129#0" expanded="true" />
                   </folding>
@@ -64,7 +73,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="data.h" pinned="false" current-in-tab="true">
+          <file leaf-file-name="data.h" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/data.h">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="576">
@@ -76,11 +85,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="data.c" pinned="false" current-in-tab="false">
+          <file leaf-file-name="data.c" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/data.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="303">
+                <state relative-caret-position="24">
                   <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="linkedlist.c" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/linkedlist.c">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1608">
+                  <caret line="67" column="25" lean-forward="false" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
                   <folding />
                 </state>
               </provider>
@@ -110,17 +129,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/linkedlist.h" />
         <option value="$PROJECT_DIR$/datastruct.h" />
         <option value="$PROJECT_DIR$/datastruct.c" />
-        <option value="$PROJECT_DIR$/linkedlist.c" />
         <option value="$PROJECT_DIR$/utils.h" />
         <option value="$PROJECT_DIR$/utils.c" />
         <option value="$PROJECT_DIR$/datatest.h" />
-        <option value="$PROJECT_DIR$/data.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/cmake-build-debug/info.dat" />
         <option value="$PROJECT_DIR$/data.c" />
+        <option value="$PROJECT_DIR$/data.h" />
+        <option value="$PROJECT_DIR$/linkedlist.h" />
+        <option value="$PROJECT_DIR$/linkedlist.c" />
       </list>
     </option>
   </component>
@@ -214,12 +233,13 @@
       <workItem from="1503214381181" duration="3513000" />
       <workItem from="1503289369230" duration="407000" />
       <workItem from="1503321214235" duration="478000" />
-      <workItem from="1503322642606" duration="2146000" />
+      <workItem from="1503322642606" duration="6817000" />
+      <workItem from="1503457669840" duration="8000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45351000" />
+    <option name="totallyTimeSpent" value="50030000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -234,7 +254,7 @@
     <frame x="235" y="136" width="1930" height="1110" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15187165" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15347594" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -501,13 +521,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/linkedlist.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" column="5" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.c" />
     <entry file="file://$PROJECT_DIR$/utils.h">
       <provider selected="true" editor-type-id="text-editor">
@@ -517,16 +530,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/datatest.h" />
-    <entry file="file://$PROJECT_DIR$/linkedlist.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="e#110#129#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -543,14 +546,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
@@ -558,6 +553,32 @@
           <folding>
             <element signature="e#43#63#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/linkedlist.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="30" column="38" lean-forward="false" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
+          <folding>
+            <element signature="e#110#129#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/linkedlist.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1608">
+          <caret line="67" column="25" lean-forward="false" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
