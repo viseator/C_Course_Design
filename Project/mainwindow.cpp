@@ -564,8 +564,8 @@ void MainWindow::onStudentAc(QString s1, QString s2, QString s3, QString s4, QSt
 }
 
 void MainWindow::onStaGrade(){
-//    StatisticWindow* window = new StatisticWindow(this);
-//    window->show();
+    StatisticWindow* window = new StatisticWindow(gradeList, this);
+    window->show();
 }
 
 void MainWindow::onStaClass(){

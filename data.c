@@ -452,6 +452,62 @@ void *sortStudentById(List *studentList){
     }
 }
 
+void *sortGradeById(List *gradeList){
+    Node *head = gradeList->head;
+    Node *tail = head;
+    while(NULL != tail->next){
+        Node *min= tail->next;
+        Node *p = min->next;
+        while(NULL != p){
+            if(strcmp(((Grade*) p->data)->id, ((Grade*)min->data)->id) < 0){
+                min = p;
+            }
+            p = p->next;
+        }
+        void *data = min->data;
+        min->data = tail->next->data;
+        tail->next->data = data;
+        tail = tail->next;
+    }
+}
+
+void *sortGradeByNum(List *gradeList){
+    Node *head = gradeList->head;
+    Node *tail = head;
+    while(NULL != tail->next){
+        Node *min= tail->next;
+        Node *p = min->next;
+        while(NULL != p){
+            if(((Grade*)p->data)->num < ((Grade*)min->data)->num){
+                min = p;
+            }
+            p = p->next;
+        }
+        void *data = min->data;
+        min->data = tail->next->data;
+        tail->next->data = data;
+        tail = tail->next;
+    }
+}
+
+void *sortGradeByUnGra(List *gradeList){
+    Node *head = gradeList->head;
+    Node *tail = head;
+    while(NULL != tail->next){
+        Node *min= tail->next;
+        Node *p = min->next;
+        while(NULL != p){
+            if((((Grade*)p->data)->num - ((Grade*)p->data)->gra_num) < ((((Grade*)min->data)->num) - ((Grade*)min->data)->gra_num)){
+                min = p;
+            }
+            p = p->next;
+        }
+        void *data = min->data;
+        min->data = tail->next->data;
+        tail->next->data = data;
+        tail = tail->next;
+    }
+}
 //int main(void) {
 //    List *grade_list = init_list(sizeof(Grade));
 //    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");

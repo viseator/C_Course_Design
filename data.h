@@ -128,4 +128,9 @@ void *sortClassById(List *classList);
 
 void *sortStudentById(List *studentList);
 
+void *sortGradeByNum(List *gradeList);
+
+void *sortGradeByUnGra(List *gradeList);
+
+void *sortGradeById(List *gradeList);
 #endif
