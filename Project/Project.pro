@@ -32,7 +32,8 @@ SOURCES += \
     qvpushbutton.cpp \
     gradedialog.cpp \
     classdialog.cpp \
-    studentdialog.cpp
+    studentdialog.cpp \
+    statisticwindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -42,10 +43,12 @@ HEADERS += \
     qvpushbutton.h \
     gradedialog.h \
     classdialog.h \
-    studentdialog.h
+    studentdialog.h \
+    statisticwindow.h
 
 FORMS += \
         mainwindow.ui \
     searchgrade.ui \
     searchclass.ui \
-    searchstudent.ui
+    searchstudent.ui \
+    statisticgrade.ui

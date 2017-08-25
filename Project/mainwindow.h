@@ -23,6 +23,7 @@
 #include "gradedialog.h"
 #include "classdialog.h"
 #include "studentdialog.h"
+#include "statisticwindow.h"
 extern "C"{
 #include "../data.h"
 }
@@ -53,6 +54,10 @@ private:
     QAction *sortGradeAction;
     QAction *sortClassAction;
     QAction *sortStudentAction;
+    QAction *statisticGrade;
+    QAction *statisticClass;
+    QAction *statisticWhere;
+    QAction *statisticBirth;
     QStandardItemModel *model;
     State currentState;
     List* gradeList = NULL;
@@ -91,7 +96,10 @@ public slots:
     void onGradeSort();
     void onClassSort();
     void onStudentSort();
-
+    void onStaGrade();
+    void onStaClass();
+    void onStaWhere();
+    void onStaBirth();
 };
 
 #endif // MAINWINDOW_H

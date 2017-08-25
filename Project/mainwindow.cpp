@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     onLoad();
 
 
-    //    test();
+//        test();
 }
 
 MainWindow::~MainWindow() { delete ui; }
@@ -61,12 +61,22 @@ void MainWindow::createActions() {
     ui->searchMenu->addAction(searchStudentAction);
 
 
+    statisticGrade = new QAction("年级统计", this);
+    statisticClass = new QAction("班级统计", this);
+    statisticWhere = new QAction("工作统计", this);
+    statisticBirth = new QAction("出生统计", this);
+    ui->statisticMenu->addAction(statisticGrade);
+    ui->statisticMenu->addAction(statisticClass);
+    ui->statisticMenu->addAction(statisticWhere);
+    ui->statisticMenu->addAction(statisticBirth);
+
     sortGradeAction = new QAction("年级排序", this);
     sortClassAction = new QAction("班级排序", this);
     sortStudentAction = new QAction("学生排序", this);
     ui->sortMenu->addAction(sortGradeAction);
     ui->sortMenu->addAction(sortClassAction);
     ui->sortMenu->addAction(sortStudentAction);
+
 
     connect(saveAction, &QAction::triggered, this, &MainWindow::onSave);
     connect(loadAction, &QAction::triggered, this, &MainWindow::onLoad);
@@ -79,6 +89,10 @@ void MainWindow::createActions() {
     connect(sortGradeAction, &QAction::triggered, this, &MainWindow::onGradeSort);
     connect(sortClassAction, &QAction::triggered, this, &MainWindow::onClassSort);
     connect(sortStudentAction, &QAction::triggered, this, &MainWindow::onStudentSort);
+    connect(statisticGrade, &QAction::triggered, this, &MainWindow::onStaGrade);
+    connect(statisticClass, &QAction::triggered, this, &MainWindow::onStaClass);
+    connect(statisticWhere, &QAction::triggered, this, &MainWindow::onStaWhere);
+    connect(statisticBirth, &QAction::triggered, this, &MainWindow::onStaBirth);
 }
 
 void MainWindow::onSave() {
@@ -547,4 +561,21 @@ void MainWindow::onStudentAc(QString s1, QString s2, QString s3, QString s4, QSt
         result = getStudentByGra(result, false);
     }
     showStudents(result);
+}
+
+void MainWindow::onStaGrade(){
+//    StatisticWindow* window = new StatisticWindow(this);
+//    window->show();
+}
+
+void MainWindow::onStaClass(){
+
+}
+
+void MainWindow::onStaWhere(){
+
+}
+
+void MainWindow::onStaBirth(){
+
 }
