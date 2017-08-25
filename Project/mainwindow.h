@@ -24,6 +24,8 @@
 #include "classdialog.h"
 #include "studentdialog.h"
 #include "statisticwindow.h"
+#include "statisticclasswindow.h"
+#include "statisticwherewindow.h"
 extern "C"{
 #include "../data.h"
 }

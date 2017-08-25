@@ -569,11 +569,13 @@ void MainWindow::onStaGrade(){
 }
 
 void MainWindow::onStaClass(){
-
+    StatisticClassWindow* window = new StatisticClassWindow(gradeList, this);
+    window->show();
 }
 
 void MainWindow::onStaWhere(){
-
+    StatisticWhereWindow* window = new StatisticWhereWindow(gradeList, this);
+    window->show();
 }
 
 void MainWindow::onStaBirth(){
