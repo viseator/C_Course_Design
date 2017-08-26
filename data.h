@@ -132,5 +132,7 @@ void *sortGradeByNum(List *gradeList);
 
 void *sortGradeByUnGra(List *gradeList);
 
+void *sortClassByUnGra(List *classList);
+
 void *sortGradeById(List *gradeList);
 #endif

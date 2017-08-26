@@ -35,7 +35,8 @@ SOURCES += \
     studentdialog.cpp \
     statisticwindow.cpp \
     statisticclasswindow.cpp \
-    statisticwherewindow.cpp
+    statisticwherewindow.cpp \
+    statisticbirthwindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -48,7 +49,8 @@ HEADERS += \
     studentdialog.h \
     statisticwindow.h \
     statisticclasswindow.h \
-    statisticwherewindow.h
+    statisticwherewindow.h \
+    statisticbirthwindow.h
 
 FORMS += \
         mainwindow.ui \
@@ -57,4 +59,5 @@ FORMS += \
     searchstudent.ui \
     statisticgrade.ui \
     statisticclass.ui \
-    statisticwhere.ui
+    statisticwhere.ui \
+    statisticbirth.ui

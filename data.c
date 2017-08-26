@@ -433,6 +433,24 @@ void *sortClassById(List *classList){
     }
 }
 
+void *sortClassByUnGra(List *classList){
+    Node *head = classList->head;
+    Node *tail = head;
+    while(NULL != tail->next){
+        Node *min= tail->next;
+        Node *p = min->next;
+        while(NULL != p){
+            if((((Class*)p->data)->num - ((Class*)p->data)->gra_num) < ((((Class*)min->data)->num) - ((Class*)min->data)->gra_num)){
+                min = p;
+            }
+            p = p->next;
+        }
+        void *data = min->data;
+        min->data = tail->next->data;
+        tail->next->data = data;
+        tail = tail->next;
+    }
+}
 void *sortStudentById(List *studentList){
     Node *head = studentList->head;
     Node *tail = head;

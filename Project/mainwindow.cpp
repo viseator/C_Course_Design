@@ -579,5 +579,6 @@ void MainWindow::onStaWhere(){
 }
 
 void MainWindow::onStaBirth(){
-
+    StatisticBirthWindow* window = new StatisticBirthWindow(gradeList, this);
+    window->show();
 }

@@ -26,6 +26,7 @@
 #include "statisticwindow.h"
 #include "statisticclasswindow.h"
 #include "statisticwherewindow.h"
+#include "statisticbirthwindow.h"
 extern "C"{
 #include "../data.h"
 }
