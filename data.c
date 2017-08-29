@@ -1,10 +1,12 @@
 #include "data.h"
 
+/**gloab files for read and write */
 FILE *student_file;
 FILE *class_file;
 FILE *grade_file;
 FILE *info_file;
 
+/**create new grade */
 void addGrade(List *list, char *id, char *time, int num, int gra_num, char *coun_name, char *coun_phone,
               char *chairman) {
     Grade *grade = (Grade *) malloc(sizeof(Grade));
@@ -19,6 +21,7 @@ void addGrade(List *list, char *id, char *time, int num, int gra_num, char *coun
     add(list, grade);
 }
 
+/**create new class */
 void addClass(List *class_list, char *id, char *name, int num, float age, int gra_num, char *mon_name, char *phone,
               char *tea_name, char *tea_phone) {
     Class *class = (Class *) malloc(sizeof(Class));
@@ -35,6 +38,7 @@ void addClass(List *class_list, char *id, char *name, int num, float age, int gr
     add(class_list, class);
 }
 
+/**create new student */
 void addStudent(List *student_list, char *id, char *name, char *gender, char *hometown, char *birth, char *phone,
                 float score, int age, bool grad, char *where) {
     Student *student = (Student *) malloc(sizeof(Student));
@@ -51,18 +55,22 @@ void addStudent(List *student_list, char *id, char *name, char *gender, char *ho
     add(student_list, student);
 }
 
+/**get grade data by position */
 Grade *getGrade(List *grade_list, int position) {
     return (Grade *) getData(grade_list, position);
 }
 
+/**get class data by position */
 Class *getClass(List *grade, int position) {
     return (Class *) getData(grade, position);
 }
 
+/**get student data by position */
 Student *getStudent(List *class, int position) {
     return (Student *) getData(class, position);
 }
 
+/**get grade by id */
 List *getGradeById(List *grade_list, const char *id) {
     List *result = init_list(sizeof(Grade));
     Node *head = getFirst(grade_list);
@@ -76,6 +84,7 @@ List *getGradeById(List *grade_list, const char *id) {
     return result;
 }
 
+/**get grade by time */
 List *getGradeByTime(List *grade_list, int min, int max) {
     List *result = init_list(sizeof(Grade));
     Node *head = getFirst(grade_list);
@@ -89,6 +98,8 @@ List *getGradeByTime(List *grade_list, int min, int max) {
     return result;
 }
 
+
+/**get grade by num */
 List *getGradeByNum(List *grade_list, int min, int max) {
     List *result = init_list(sizeof(Grade));
     Node *head = getFirst(grade_list);
@@ -102,7 +113,7 @@ List *getGradeByNum(List *grade_list, int min, int max) {
     return result;
 }
 
-
+/**get class by id */
 List *getClassById(List *class_list, const char *id) {
     List *result = init_list(sizeof(Class));
     Node *head = getFirst(class_list);
@@ -116,6 +127,7 @@ List *getClassById(List *class_list, const char *id) {
     return result;
 }
 
+/**get class by name */
 List *getClassByName(List *class_list, const char *name) {
     List *result = init_list(sizeof(Grade));
     Node *head = getFirst(class_list);
@@ -129,6 +141,7 @@ List *getClassByName(List *class_list, const char *name) {
     return result;
 }
 
+/**get class by teacher name */
 List *getClassByTeaName(List *class_list, const char *name) {
     List *result = init_list(sizeof(Class));
     Node *head = getFirst(class_list);
@@ -142,6 +155,7 @@ List *getClassByTeaName(List *class_list, const char *name) {
     return result;
 }
 
+/**get class by num */
 List *getClassByNum(List *class_list, int min, int max) {
     List *result = init_list(sizeof(Class));
     Node *head = getFirst(class_list);
@@ -155,7 +169,7 @@ List *getClassByNum(List *class_list, int min, int max) {
     return result;
 }
 
-
+/**get student by name */
 List *getStudentByName(List *student_list, const char *name) {
     List *result = init_list(sizeof(Student));
     Node *head = getFirst(student_list);
@@ -169,6 +183,7 @@ List *getStudentByName(List *student_list, const char *name) {
     return result;
 }
 
+/**get student by where */
 List *getStudentByWhere(List *student_list, const char *where) {
     List *result = init_list(sizeof(Student));
     Node *head = getFirst(student_list);
@@ -183,6 +198,7 @@ List *getStudentByWhere(List *student_list, const char *where) {
 }
 
 
+/**get student by age */
 List *getStudentByAge(List *student_list, int min, int max) {
     List *result = init_list(sizeof(Student));
     Node *head = getFirst(student_list);
@@ -196,6 +212,7 @@ List *getStudentByAge(List *student_list, int min, int max) {
     return result;
 }
 
+/**get student by gratuation */
 List *getStudentByGra(List *student_list, bool gra){
     List *result = init_list(sizeof(Student));
     Node *head = getFirst(student_list);
@@ -209,6 +226,7 @@ List *getStudentByGra(List *student_list, bool gra){
     return result;
 }
 
+/**open file for write */
 void openFileForWrite() {
     student_file = fopen("student.dat", "wb");
     class_file = fopen("class.dat", "wb");
@@ -216,6 +234,7 @@ void openFileForWrite() {
     info_file = fopen("info.dat", "w");
 }
 
+/**close files */
 void closeFile() {
     fclose(student_file);
     fclose(class_file);
@@ -223,6 +242,7 @@ void closeFile() {
     fclose(info_file);
 }
 
+/**write list to file */
 void writeListToFile(List *list, FILE *file) {
     Node *head = list->head->next;
     while (NULL != head) {
@@ -231,11 +251,13 @@ void writeListToFile(List *list, FILE *file) {
     }
 }
 
+/**save student list to file */
 void saveStudentToFile(List *student_list) {
     fprintf(info_file, "%d\n", student_list->length);
     writeListToFile(student_list, student_file);
 }
 
+/**save class list to file */
 void saveClassToFile(List *class_list) {
     fprintf(info_file, "%d\n", class_list->length);
     writeListToFile(class_list, class_file);
@@ -247,6 +269,7 @@ void saveClassToFile(List *class_list) {
     }
 }
 
+/**save grade list to file */
 void saveGradeToFile(List *grade_list) {
     openFileForWrite();
     fprintf(info_file, "%d\n", grade_list->length);
@@ -260,6 +283,7 @@ void saveGradeToFile(List *grade_list) {
     closeFile();
 }
 
+/**open file for read */
 void openFileForRead() {
     student_file = fopen("student.dat", "rb");
     class_file = fopen("class.dat", "rb");
@@ -267,6 +291,7 @@ void openFileForRead() {
     info_file = fopen("info.dat", "r");
 }
 
+/**read student list from file */
 List *readStudentFromFile(int num) {
     List *result = init_list(sizeof(Student));
     while (num--) {
@@ -277,6 +302,7 @@ List *readStudentFromFile(int num) {
     return result;
 }
 
+/**read class list from file */
 List *readClassFromFile(int num) {
     List *result = init_list(sizeof(Class));
     while (num--) {
@@ -294,6 +320,7 @@ List *readClassFromFile(int num) {
     return result;
 }
 
+/**read grade list from file */
 List *readGradeFromFile() {
     openFileForRead();
     int num;
@@ -315,6 +342,7 @@ List *readGradeFromFile() {
     return result;
 }
 
+/**remove all students in list */
 void removeStudent(List* student_list){
     Node* head = student_list->head;
     while(NULL != head->next){
@@ -322,6 +350,7 @@ void removeStudent(List* student_list){
     }
 }
 
+/**remove all classes in list */
 void removeClass(List* class_list){
     Node* head = class_list->head;
     while(NULL != head->next){
@@ -333,6 +362,7 @@ void removeClass(List* class_list){
     }
 }
 
+/**remove all grades in list */
 void removeGrade(List* grade_list){
     Node* head = grade_list->head;
     while(NULL != head->next){
@@ -344,6 +374,7 @@ void removeGrade(List* grade_list){
     }
 }
 
+/**remove a student from class list */
 void removeStudentFromClass(List *class_list, void *data){
     for(int i = 0; i < class_list->length; i++){
         List *student_list = getClass(class_list, i)->students;
@@ -351,6 +382,7 @@ void removeStudentFromClass(List *class_list, void *data){
     }
 }
 
+/**remove a student in all students */
 void removeStudentByData(List *grade_list, void *data){
     for(int i = 0; i < grade_list->length; i++){
         List *class_list = getGrade(grade_list, i)->classes;
@@ -358,6 +390,7 @@ void removeStudentByData(List *grade_list, void *data){
     }
 }
 
+/**remove a class in all grades */
 void removeClassByData(List *grade_list, void *data){
     for(int i = 0; i < grade_list->length; i++){
         List *class_list = getGrade(grade_list, i)->classes;
@@ -365,10 +398,12 @@ void removeClassByData(List *grade_list, void *data){
     }
 }
 
+/**remove a grade in all grades */
 void removeGradeByData(List *grade_list, void *data){
     removeNode(grade_list, data);
 }
 
+/**get all classes in grade list */
 List *getAllClass(List *grade_list){
     List *result = init_list(sizeof(Class));
     for(int i = 0; i < grade_list->length; i++){
@@ -377,6 +412,7 @@ List *getAllClass(List *grade_list){
     return result;
 }
 
+/**get all students in grade list */
 List *getAllStudent(List *gradeList){
     List *result = init_list(sizeof(Student));
     List *classes = getAllClass(gradeList);
@@ -386,6 +422,7 @@ List *getAllStudent(List *gradeList){
     return result;
 }
 
+/**get all students in a class list */
 List *getAllStudentInClass(List *classes){
     List *result = init_list(sizeof(Student));
     for(int i = 0; i < classes->length; i++){
@@ -394,7 +431,7 @@ List *getAllStudentInClass(List *classes){
     return result;
 }
 
-
+/**sort grade list by time */
 void *sortGradeByTime(List *gradeList){
     Node *head = gradeList->head;
     Node *tail = head;
@@ -414,6 +451,7 @@ void *sortGradeByTime(List *gradeList){
     }
 }
 
+/**sort class list by id */
 void *sortClassById(List *classList){
     Node *head = classList->head;
     Node *tail = head;
@@ -433,6 +471,7 @@ void *sortClassById(List *classList){
     }
 }
 
+/**sort class list by ungratuated */
 void *sortClassByUnGra(List *classList){
     Node *head = classList->head;
     Node *tail = head;
@@ -451,6 +490,8 @@ void *sortClassByUnGra(List *classList){
         tail = tail->next;
     }
 }
+
+/**sort student list by id */
 void *sortStudentById(List *studentList){
     Node *head = studentList->head;
     Node *tail = head;
