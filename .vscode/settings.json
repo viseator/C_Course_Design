@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "chrono": "c",
-        "limits": "c"
+        "limits": "c",
+        "array": "c",
+        "string_view": "c"
     }
 }
