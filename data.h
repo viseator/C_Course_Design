@@ -14,6 +14,7 @@ extern FILE *class_file;
 extern FILE *grade_file;
 extern FILE *info_file;
 
+/**struct for student infomation */
 typedef struct student {
     char id[12];
     char name[NAME_SIZE];
@@ -27,6 +28,7 @@ typedef struct student {
     char where[NAME_SIZE];
 } Student;
 
+/**struct for class infomation */
 typedef struct class_ {
     char id[15];
     char name[NAME_SIZE];
@@ -40,6 +42,7 @@ typedef struct class_ {
     List *students;
 } Class;
 
+/**struct for grade infomation */
 typedef struct grade {
     char id[5];
     char time[9];
@@ -50,6 +53,7 @@ typedef struct grade {
     char chairman[NAME_SIZE];
     List *classes;
 } Grade;
+
 
 List *readGradeFromFile();
 

@@ -3,6 +3,7 @@
         "chrono": "c",
         "limits": "c",
         "array": "c",
-        "string_view": "c"
+        "string_view": "c",
+        "linkedlist.h": "c"
     }
 }

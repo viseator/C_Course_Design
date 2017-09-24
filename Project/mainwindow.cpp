@@ -8,7 +8,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->forwradAction, SIGNAL(triggered(bool)), this, SLOT(onForward()));
     connect(ui->deleteAction,SIGNAL(triggered(bool)), this, SLOT(onDelete()));
     createActions();
-    onLoad();
 
 
 //        test();

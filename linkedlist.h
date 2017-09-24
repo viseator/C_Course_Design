@@ -7,11 +7,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/**struct node stores data */
 typedef struct node {
     void *data;
     struct node *next;
 } Node;
 
+/**struct list stores linked list infomation */
 typedef struct list {
     Node *head;
     size_t size;

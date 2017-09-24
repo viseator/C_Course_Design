@@ -511,6 +511,7 @@ void *sortStudentById(List *studentList){
     }
 }
 
+/**sort grade by id */
 void *sortGradeById(List *gradeList){
     Node *head = gradeList->head;
     Node *tail = head;
@@ -530,6 +531,7 @@ void *sortGradeById(List *gradeList){
     }
 }
 
+/**sort grade by student number */
 void *sortGradeByNum(List *gradeList){
     Node *head = gradeList->head;
     Node *tail = head;
@@ -549,6 +551,7 @@ void *sortGradeByNum(List *gradeList){
     }
 }
 
+/**sort grade by ungratuated student number */
 void *sortGradeByUnGra(List *gradeList){
     Node *head = gradeList->head;
     Node *tail = head;
@@ -567,28 +570,3 @@ void *sortGradeByUnGra(List *gradeList){
         tail = tail->next;
     }
 }
-//int main(void) {
-//    List *grade_list = init_list(sizeof(Grade));
-//    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-//    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-//    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-//    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-//    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-//    addGrade(grade_list, "2017", "20170101", 100, 0, "LiJin", "12312341234", "ChenZhuo");
-//    addClass((getGrade(grade_list, 2)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234", "Yuan",
-//             "12312341234");
-//    addClass((getGrade(grade_list, 2)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234", "Yuan",
-//             "12312341234");
-//    addClass((getGrade(grade_list, 3)), "CS1609", "计算机", 100, 10.1, 101, "Yuan", "12312341234", "Yuan",
-//             "12312341234");
-//    addStudent(getClass(getGrade(grade_list, 2)->classes, 1), "U201614753", "吴迪111", "1", "YUSHAN", "19971024",
-//               "13479343728", 666, 18, false, "Ali");
-//    addStudent(getClass(getGrade(grade_list, 2)->classes, 0), "U201614753", "吴迪222", "1", "YUSHAN", "19971024",
-//               "13479343728", 666, 18, false, "Ali");
-//    addStudent(getClass(getGrade(grade_list, 3)->classes, 0), "U201614753", "吴迪333", "1", "YUSHAN", "19971024",
-//               "13479343728", 666, 18, false, "Ali");
-//    saveGradeToFile(grade_list);
-//    grade_list = readGradeFromFile();
-//    saveGradeToFile(grade_list);
-//    return 0;
-//}
